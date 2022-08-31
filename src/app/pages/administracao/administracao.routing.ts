@@ -43,6 +43,17 @@ export const AdministracaoRoutes: Routes = [
           'ROLE_AMIGO_VISUALIZAR',
           'ROLE_AMIGO_REMOVER',
           'ROLE_AMIGO_STATUS',
+
+          'ROLE_MODELOARMA_INCLUIR',
+          'ROLE_MODELOARMA_ALTERAR',
+          'ROLE_MODELOARMA_PESQUISAR',
+          'ROLE_MODELOARMA_VISUALIZAR',
+
+          'ROLE_CLIENTE_INCLUIR',
+          'ROLE_CLIENTE_ALTERAR',
+          'ROLE_CLIENTE_PESQUISAR',
+          'ROLE_CLIENTE_VISUALIZAR',
+          'ROLE_CLIENTE_STATUS',
         ]
       }
     },
