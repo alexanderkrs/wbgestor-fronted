@@ -93,6 +93,15 @@ export class AppMessage implements InternacionalizacaoResource {
       LABEL_DADOS_TIPOAMIGO: 'Dados do tipo amigo',
       LABEL_REMOVER_TIPOAMIGO: 'Remover tipo de amigo',
 
+      // Texto manter CLIENTE
+      LABEL_PESQUISAR_CLIENTE: 'Pesquisar tipo de amigo',
+      LABEL_ALTERAR_CLIENTE: 'Alterar tipo de amigo',
+      LABEL_INCLUIR_CLIENTE: 'Incluir tipo de amigo',
+      LABEL_VISUALIZAR_CLIENTE: 'Visualizar tipo de amigo',
+      LABEL_CLIENTE_HINT: 'Digite o nome do tipo de amigo',
+      LABEL_DADOS_CLIENTE: 'Dados do cliente',
+      LABEL_REMOVER_CLIENTE: 'Remover tipo de amigo',
+
       // Texto manter  AMIGO
       LABEL_PESQUISAR_AMIGO: 'Pesquisar amigo',
       LABEL_ALTERAR_AMIGO: 'Alterar amigo',

@@ -57,7 +57,8 @@ $custom-typography: mat-typography-config(
 @include mat-core($custom-typography);
 
 //$primary: mat-palette($mat-deep-purple);
-$primary: mat-palette($mat-red-black,A800);
+$primary: mat-palette($mat-red-black,50);
+$primary2: mat-palette($mat-red-black,A800);
 //#0a8396
 //02a2bb
 //$accent: mat-palette($mat-green);
