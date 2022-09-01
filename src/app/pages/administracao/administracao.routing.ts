@@ -54,6 +54,8 @@ export const AdministracaoRoutes: Routes = [
           'ROLE_CLIENTE_PESQUISAR',
           'ROLE_CLIENTE_VISUALIZAR',
           'ROLE_CLIENTE_STATUS',
+
+          // COLOCAR OS ROLES DAS ARMAS
         ]
       }
     },
@@ -70,6 +72,9 @@ export const AdministracaoRoutes: Routes = [
       },
       {
         path: 'tipo-amigo', loadChildren: () => import('../tipo-amigo/tipo-amigo.module').then(m => m.TipoAmigoModule)
+      },
+      {
+        path: 'modelo-arma', loadChildren: () => import('../modelo-arma/modelo-arma.module').then(m => m.ModeloArmaModule)
       },
       {
         path: 'amigo', loadChildren: () => import('../amigo/amigo.module').then(m => m.AmigoModule)
