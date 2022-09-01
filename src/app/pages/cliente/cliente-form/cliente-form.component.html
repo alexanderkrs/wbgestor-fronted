@@ -1,0 +1,138 @@
+<div fxLayout="column" fxLayoutGap="1.5%" fxLayoutGap.xs="2%">
+
+  <div fxLayout="row">
+    <div class="content__title" fxFlex fxFlexAlign="center">
+      <span *ngIf="acaoSistema.isAcaoAlterar()">{{'LABEL_ALTERAR_USUARIO' | i18n}}</span>
+      <span *ngIf="acaoSistema.isAcaoIncluir()">{{'LABEL_INCLUIR_USUARIO' | i18n}}</span>
+      <span *ngIf="acaoSistema.isAcaoVisualizar()">{{'LABEL_VISUALIZAR_USUARIO' | i18n}}</span>
+    </div>
+  </div>
+
+  <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
+
+    <form #formUsuario="ngForm">
+      <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
+        <mat-card-title>
+          <span>Cliente</span>
+        </mat-card-title>
+        <mat-card-content fxLayout="column" fxLayoutGap="0.7%" fxLayoutGap.xs="3%">
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="end end" fxLayout.lt-sm="column" fxLayoutGap="0.7%" fxLayoutGap.xs="3%" fxLayoutGap.xs="7%">
+            <div fxLayout="column" fxLayoutAlign.gt-xs="start start" fxLayout.lt-sm="row" fxLayoutGap.lt-sm="3%" fxLayoutGap.gt-xs="7%"
+                 *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoVisualizar()">
+              <mat-label>{{'LABEL_ACESSO_BLOQUEADO' | i18n}}:</mat-label>
+              <mat-label>{{ (cliente.acessoBloqueado ? 'LABEL_SIM' : 'LABEL_NAO') | i18n }}</mat-label>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign.gt-xs="start start" fxLayout.lt-sm="row" fxLayoutGap.lt-sm="3%" fxLayoutGap.gt-xs="7%"
+                 *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoVisualizar()">
+              <mat-label>{{'LABEL_STATUS_PORTAL' | i18n}}:</mat-label>
+              <mat-slide-toggle [(ngModel)]="cliente.status" (change)="alterarStatusUsuario(cliente)" name="statusUsuario"
+                                *ngIf="acaoSistema.isAcaoAlterar() && securityService.hasRoles('ROLE_USUARIO_ATIVAR_INATIVAR')"
+                                title="{{ (cliente.status ? 'LABEL_ATIVO' : 'LABEL_INATIVO') | i18n }}"
+              >
+              </mat-slide-toggle>
+              <mat-label
+                *ngIf="acaoSistema.isAcaoVisualizar() || !securityService.hasRoles('ROLE_USUARIO_ATIVAR_INATIVAR')">
+                {{(cliente.status ? 'LABEL_ATIVO' : 'LABEL_INATIVO') | i18n}}
+              </mat-label>
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Nome:</mat-label>
+              <input matInput placeholder="" title="Nome do Cliente"
+                     [(ngModel)]="cliente.nome" name="login" required maxlength="20"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submittedUsuario"></mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <mat-label>Endereço</mat-label>
+              <input matInput placeholder="Digite seu endereço" title="{{'LABEL_EMAIL' | i18n}}" type="email"
+                     [(ngModel)]="cliente.endereco" name="email" required maxlength="50"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submittedUsuario"></mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>CR</mat-label>
+              <input matInput placeholder="Digite o número do CR" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="cliente.nome" name="nome" required maxlength="100"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submittedUsuario"></mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <mat-label>CPF</mat-label>
+              <input matInput placeholder="Digite o número do CPF" title="{{'LABEL_CPF' | i18n}}"
+                     [(ngModel)]="cliente.cpf" name="cpf" required maxlength="15" mask="000.000.000-00"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+                     (focusout)="validarCpf()"
+              >
+              <mat-error validationMessage [submitted]="submittedUsuario"></mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Validade CR</mat-label>
+              <input matInput placeholder="Digite a validade do CR" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="cliente.validadeCR" name="nome" required maxlength="100"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submittedUsuario"></mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <mat-label>Data de Nascimento</mat-label>
+              <input matInput placeholder="Digite a data de nascimento" title="{{'LABEL_CPF' | i18n}}"
+                     [(ngModel)]="cliente.dataNascimento" name="DataNascimento" required maxlength="15" mask="000.000.000-00"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submittedUsuario"></mat-error>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+
+    <app-usuario-telefone-form [telefonesUsuario]="telefonesUsuario" [idUsuario]="cliente.id"></app-usuario-telefone-form>
+
+
+    <mat-card-footer fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
+      <div fxLayout="row" fxFlex="100" fxLayoutAlign="end center">
+        <div fxFlex.gt-sm="30" fxFlex.sm="50" fxFlex.lt-sm="100" fxFlexAlign="space-between"
+             fxLayoutAlign="end center">
+          <a title="{{'LABEL_VOLTAR' | i18n}}" (click)="cancelar()" fxFlex fxFlexOffset="1"
+             class="mat-button mat-raised-button mat-primary mat-button-base"
+             *ngIf="acaoSistema.isAcaoVisualizar()"
+          >
+            <span>{{'LABEL_VOLTAR' | i18n}}</span>
+          </a>
+          <a title="{{'LABEL_CANCELAR' | i18n}}" (click)="cancelar()" fxFlex fxFlexOffset="1"
+             class="mat-button mat-raised-button mat-warn mat-button-base"
+             *ngIf="!acaoSistema.isAcaoVisualizar()"
+          >
+            <span>{{'LABEL_CANCELAR' | i18n}}</span>
+          </a>
+          <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(cliente, formUsuario, $event)"
+                  fxFlex fxFlexOffset="1"
+                  class="mat-button mat-raised-button mat-primary mat-button-base"
+                  *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoIncluir()"
+          >
+            <span>{{'LABEL_SALVAR' | i18n}}</span>
+          </button>
+        </div>
+      </div>
+    </mat-card-footer>
+
+  </mat-card>
+</div>

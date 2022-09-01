@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
 
 import { SecurityGuard } from '../../shared/security/security.guard';
-import { TipoAmigoResolve } from './shared/tipo-amigo-client/tipo-amigo.resolve';
-import { TipoAmigoFormComponent } from './tipo-amigo-form/tipo-amigo-form.component';
-import { TipoAmigoListComponent } from './tipo-amigo-list/tipo-amigo-list.component';
-import {TipoAmigoListResolve} from './shared/tipo-amigo-client/tipo-amigo-list.resolve';
+import { ClienteResolve } from './shared/cliente-client/cliente.resolve';
+import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { ClienteListComponent } from './cliente-list/cliente-list.component';
 
 /**
  * Configurações de rota de Usuário.
@@ -14,7 +13,7 @@ import {TipoAmigoListResolve} from './shared/tipo-amigo-client/tipo-amigo-list.r
 export const ClienteRoutes: Routes = [
   {
     path: 'incluir',
-    component: TipoAmigoFormComponent,
+    component: ClienteFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -22,31 +21,31 @@ export const ClienteRoutes: Routes = [
       acao: 'incluir',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_INCLUIR'
+          'ROLE_USUARIO_INCLUIR'
         ]
       }
     },
+    resolve: {
+      // sistemas: SistemaAtivoResolve
+    }
   },
   {
     path: 'listar',
-    component: TipoAmigoListComponent,
+    component: ClienteListComponent,
     canActivate: [
       SecurityGuard
     ],
     data: {
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_PESQUISAR'
+          'ROLE_USUARIO_PESQUISAR'
         ]
       }
-    },
-    resolve: {
-      tipoamigos: TipoAmigoListResolve,
     }
   },
   {
     path: ':id/alterar',
-    component: TipoAmigoFormComponent,
+    component: ClienteFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -54,17 +53,18 @@ export const ClienteRoutes: Routes = [
       acao: 'alterar',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_ALTERAR'
+          'ROLE_USUARIO_ALTERAR'
         ]
       }
     },
     resolve: {
-      tipoAmigo: TipoAmigoResolve,
+      usuario: ClienteResolve,
+      // sistemas: SistemaAtivoResolve
     }
   },
   {
     path: ':id/visualizar',
-    component: TipoAmigoFormComponent,
+    component: ClienteFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -72,12 +72,12 @@ export const ClienteRoutes: Routes = [
       acao: 'visualizar',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_VISUALIZAR'
+          'ROLE_USUARIO_VISUALIZAR'
         ]
       }
     },
     resolve: {
-      tipoAmigo: TipoAmigoResolve
+      usuario: ClienteResolve
     }
   },
   {

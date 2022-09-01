@@ -29,3 +29,28 @@
 .mat-row-lt-sm{
   min-height: 0;
 }
+
+@media(max-width: 600px) {
+
+  //.mat-header-row {
+  //  display: none;
+  //}
+
+  //.mat-row {
+  //  flex-direction: column;
+  //  align-items: start;
+  //  padding: 4px 14px;
+  //}
+
+  //.style-column{
+  //  border:none;
+  //  padding: 0;
+  //  margin:0;
+  //}
+
+  //mat-footer-row, mat-row{
+  //  min-height: 0;
+  //}
+
+
+}
