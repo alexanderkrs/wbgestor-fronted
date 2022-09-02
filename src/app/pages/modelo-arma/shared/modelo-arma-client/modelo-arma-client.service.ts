@@ -36,7 +36,7 @@ export class ModeloArmaClientService {
    * @param filtroDTO
    */
   public getByFiltro(filtroDTO: FiltroUsuarioDTO): Observable<any> {
-    return this.http.get(`${environment.urlApi}/modeloarma/filtro`, {
+    return this.http.get(`${environment.urlApi}/modeloarma`, {
       params: filtroDTO.toParams()
     });
   }

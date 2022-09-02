@@ -18,9 +18,9 @@
     <mat-card-content fxLayout="column">
       <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column">
         <mat-form-field fxFlex fxFlex.gt-xs="70" fxFlex.lt-sm="100">
-          <mat-label>{{'LABEL_NOME' | i18n}}</mat-label>
+          <mat-label>Modelo</mat-label>
           <input matInput placeholder="{{'LABEL_TIPOAMIGO_HINT' | i18n}}" title="{{'LABEL_NOME' | i18n}}"
-                 [(ngModel)]="filtroDTO.nome" maxlength="100">
+                 [(ngModel)]="filtroDTO.modelo" maxlength="100">
         </mat-form-field>
       </div>
 
@@ -51,7 +51,7 @@
         <div class="table-detail">
           <mat-table #table [dataSource]="dataSource">
 
-            <ng-container matColumnDef="nome">
+            <ng-container matColumnDef="modelo">
               <mat-header-cell class="style-header" fxHide.xs="true" fxLayoutAlign="center center"
                                *matHeaderCellDef> {{ 'LABEL_NOME' | i18n}} </mat-header-cell>
               <mat-cell fxFlex.lt-sm="100" ngClass.gt-sm="style-column" fxLayoutAlign="start center"
@@ -61,7 +61,7 @@
                     <span class="mat-body-strong">{{ 'LABEL_NOME' | i18n}} :</span>
                   </div>
                   <div>
-                    {{element.nome}}
+                    {{element.modelo}}
                   </div>
                 </div>
               </mat-cell>
