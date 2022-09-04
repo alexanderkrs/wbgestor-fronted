@@ -82,7 +82,7 @@ export const TipoAmigoRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'listar',
+    redirectTo: 'incluir',
     pathMatch: 'full'
   }
 ];
