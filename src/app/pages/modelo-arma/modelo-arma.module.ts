@@ -7,17 +7,17 @@ import {MaterialModule} from '../../layouts/material.module';
 
 
 import {OrderModule} from 'ngx-order-pipe';
-import {TipoAmigoRoutes} from './tipo-amigo.routing';
+import {TipoAmigoRoutes} from './modelo-arma.routing';
 import {MessageModule} from '../../shared/message/message.module';
 import {ValidationModule} from '../../shared/validation/validation.module';
-import {TipoAmigoFormComponent} from './tipo-amigo-form/tipo-amigo-form.component';
-import {TipoAmigoListComponent} from './tipo-amigo-list/tipo-amigo-list.component';
-import {TipoAmigoClientModule} from './shared/tipo-amigo-client/tipo-amigo-client.module';
+import {ModeloArmaFormComponent} from './modelo-arma-form/modelo-arma-form.component';
+import {ModeloArmaListComponent} from './modelo-arma-list/modelo-arma-list.component';
+import {ModeloArmaClientModule} from './shared/modelo-arma-client/modelo-arma-client.module';
 
 @NgModule({
   declarations: [
-    TipoAmigoFormComponent,
-    TipoAmigoListComponent
+    ModeloArmaFormComponent,
+    ModeloArmaListComponent
   ],
   entryComponents: [
   ],
@@ -28,9 +28,9 @@ import {TipoAmigoClientModule} from './shared/tipo-amigo-client/tipo-amigo-clien
     MessageModule,
     MaterialModule,
     ValidationModule,
-    TipoAmigoClientModule,
+    ModeloArmaClientModule,
     NgxMaskModule.forRoot({}),
     RouterModule.forChild(TipoAmigoRoutes)
   ]
 })
-export class TipoAmigoModule { }
+export class ModeloArmaModule { }

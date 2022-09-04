@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 import { MessageService } from 'src/app/shared/message/message.service';
-import { TipoAmigoClientService } from './tipo-amigo-client.service';
+import { ModeloArmaClientService } from './modelo-arma-client.service';
 import {FiltroTipoAmigoDTO} from '../../../../shared/dto/filtro-tipo-amigo.dto';
 
 /**
@@ -13,7 +13,7 @@ import {FiltroTipoAmigoDTO} from '../../../../shared/dto/filtro-tipo-amigo.dto';
  * @author Guiliano Rangel (UEG)
  */
 @Injectable()
-export class TipoAmigoListResolve implements Resolve<any> {
+export class ModeloArmaListResolve implements Resolve<any> {
 
   /**
    * Construtor da classe.
@@ -24,7 +24,7 @@ export class TipoAmigoListResolve implements Resolve<any> {
    */
   constructor(
     private router: Router,
-    private tipoAmigoClientService: TipoAmigoClientService,
+    private tipoAmigoClientService: ModeloArmaClientService,
     private messageService: MessageService
   ) { }
 

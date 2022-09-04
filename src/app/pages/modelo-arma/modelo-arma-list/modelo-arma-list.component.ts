@@ -7,8 +7,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MessageService} from 'src/app/shared/message/message.service';
 import {SecurityService} from 'src/app/shared/security/security.service';
 import {AbstractComponent} from '../../../shared/component/Abstract.component';
-import {TipoAmigoClientService} from '../shared/tipo-amigo-client/tipo-amigo-client.service';
-import {FiltroTipoAmigoDTO} from '../../../shared/dto/filtro-tipo-amigo.dto';
+import {ModeloArmaClientService} from '../shared/modelo-arma-client/modelo-arma-client.service';
+import {FiltroModeloArmaDTO} from '../../../shared/dto/filtro-modelo-arma.dto';
+import {ModeloArmaListResolve} from "../shared/modelo-arma-client/modelo-arma-list.resolve";
 
 /**
  * Componente de listagem de Usuário.
@@ -16,17 +17,17 @@ import {FiltroTipoAmigoDTO} from '../../../shared/dto/filtro-tipo-amigo.dto';
  * @author Guiliano Rangel (UEG)
  */
 @Component({
-  selector: 'app-tipoamigo-list',
-  templateUrl: './tipo-amigo-list.component.html',
-  styleUrls: ['./tipo-amigo-list-component.scss']
+  selector: 'app-modeloarma-list',
+  templateUrl: './modelo-arma-list.component.html',
+  styleUrls: ['./modelo-arma-list-component.scss']
 })
-export class TipoAmigoListComponent extends AbstractComponent implements OnInit {
+export class ModeloArmaListComponent extends AbstractComponent implements OnInit {
 
-  public filtroDTO: FiltroTipoAmigoDTO;
+  public filtroDTO: FiltroModeloArmaDTO;
 
   public dataSource: MatTableDataSource<any>;
 
-  public displayedColumns = [ 'nome', 'acoes'];
+  public displayedColumns = [ 'modelo', 'acoes'];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -36,34 +37,34 @@ export class TipoAmigoListComponent extends AbstractComponent implements OnInit 
    * @param route
    * @param messageService
    * @param securityService
-   * @param tipoAmigoClientService
+   * @param modeloAmraClientService
    */
   constructor(
     route: ActivatedRoute,
     private messageService: MessageService,
     public securityService: SecurityService,
-    private tipoAmigoClientService: TipoAmigoClientService
+    private modeloArmaClientService: ModeloArmaClientService
   ) {
     super();
-    const tipoamigos = route.snapshot.data.tipoamigos;
-    this.dataSource = new MatTableDataSource<any>(tipoamigos);
+    const modeloArmas = route.snapshot.data.modeloArmas;
+    this.dataSource = new MatTableDataSource<any>(modeloArmas);
   }
 
   /**
    * Inicializa o Component.
    */
   ngOnInit() {
-    this.filtroDTO = FiltroTipoAmigoDTO.getInstace();
+    this.filtroDTO = FiltroModeloArmaDTO.getInstace();
     this.dataSource.paginator = this.paginator;
   }
 
   /**
    * Pesquisa o Tipo Amigo conforme o filtro de pesquisa informado.
    *
-   * @param filtroTipoAmigoDTO
+   * @param filtroModeloArmaDTO
    */
-  public pesquisar(filtroTipoAmigoDTO: FiltroTipoAmigoDTO): void {
-    this.tipoAmigoClientService.getByFiltro(filtroTipoAmigoDTO).subscribe(data => {
+  public pesquisar(filtroModeloArmaDTO: FiltroModeloArmaDTO): void {
+    this.modeloArmaClientService.getByFiltro(filtroModeloArmaDTO).subscribe(data => {
       this.dataSource.paginator = this.paginator;
       this.dataSource.data = data;
     }, data => {
@@ -76,7 +77,7 @@ export class TipoAmigoListComponent extends AbstractComponent implements OnInit 
    * Limpa o filtro de pesquisa informado.
    */
   public limpar(): void {
-    this.filtroDTO = FiltroTipoAmigoDTO.getInstace();
+    this.filtroDTO = FiltroModeloArmaDTO.getInstace();
     this.dataSource.data = [];
   }
 
@@ -87,8 +88,8 @@ export class TipoAmigoListComponent extends AbstractComponent implements OnInit 
    */
   private remover(usuario: any): void {
     this.messageService.addConfirmYesNo('MSG045', () => {
-      this.tipoAmigoClientService.remover(usuario).subscribe(() => {
-        this.filtroDTO.nome = this.filtroDTO.nome ? this.filtroDTO.nome : '%';
+      this.modeloArmaClientService.remover(usuario).subscribe(() => {
+        this.filtroDTO.modelo = this.filtroDTO.modelo ? this.filtroDTO.modelo : '%';
         this.pesquisar(this.filtroDTO);
         this.messageService.addMsgSuccess('MSG007');
       }, error => {

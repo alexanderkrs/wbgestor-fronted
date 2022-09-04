@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 
 import { SecurityGuard } from '../../shared/security/security.guard';
-import { TipoAmigoResolve } from './shared/tipo-amigo-client/tipo-amigo.resolve';
-import { TipoAmigoFormComponent } from './tipo-amigo-form/tipo-amigo-form.component';
-import { TipoAmigoListComponent } from './tipo-amigo-list/tipo-amigo-list.component';
-import {TipoAmigoListResolve} from './shared/tipo-amigo-client/tipo-amigo-list.resolve';
+import { ModeloArmaResolve } from './shared/modelo-arma-client/modelo-arma.resolve';
+import { ModeloArmaFormComponent } from './modelo-arma-form/modelo-arma-form.component';
+import { ModeloArmaListComponent } from './modelo-arma-list/modelo-arma-list.component';
+import {ModeloArmaListResolve} from './shared/modelo-arma-client/modelo-arma-list.resolve';
 
 /**
  * Configurações de rota de Usuário.
@@ -14,7 +14,7 @@ import {TipoAmigoListResolve} from './shared/tipo-amigo-client/tipo-amigo-list.r
 export const TipoAmigoRoutes: Routes = [
   {
     path: 'incluir',
-    component: TipoAmigoFormComponent,
+    component: ModeloArmaFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -29,7 +29,7 @@ export const TipoAmigoRoutes: Routes = [
   },
   {
     path: 'listar',
-    component: TipoAmigoListComponent,
+    component: ModeloArmaListComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -41,12 +41,12 @@ export const TipoAmigoRoutes: Routes = [
       }
     },
     resolve: {
-      tipoamigos: TipoAmigoListResolve,
+      tipoamigos: ModeloArmaListResolve,
     }
   },
   {
     path: ':id/alterar',
-    component: TipoAmigoFormComponent,
+    component: ModeloArmaFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -59,12 +59,12 @@ export const TipoAmigoRoutes: Routes = [
       }
     },
     resolve: {
-      tipoAmigo: TipoAmigoResolve,
+      tipoAmigo: ModeloArmaResolve,
     }
   },
   {
     path: ':id/visualizar',
-    component: TipoAmigoFormComponent,
+    component: ModeloArmaFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -77,7 +77,7 @@ export const TipoAmigoRoutes: Routes = [
       }
     },
     resolve: {
-      tipoAmigo: TipoAmigoResolve
+      tipoAmigo: ModeloArmaResolve
     }
   },
   {

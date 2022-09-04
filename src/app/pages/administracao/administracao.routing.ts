@@ -63,6 +63,9 @@ export const AdministracaoRoutes: Routes = [
       {
         path: 'amigo', loadChildren: () => import('../amigo/amigo.module').then(m => m.AmigoModule)
       },
+            {
+              path: 'modelo-arma', loadChildren: () => import('../modelo-arma/modelo-arma.module').then(m => m.ModeloArmaModule)
+            },
     ]
   }
 ];

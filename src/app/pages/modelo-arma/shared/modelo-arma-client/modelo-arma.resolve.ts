@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 import { MessageService } from 'src/app/shared/message/message.service';
-import { TipoAmigoClientService } from './tipo-amigo-client.service';
+import { ModeloArmaClientService } from './modelo-arma-client.service';
 
 /**
  * Classe resolve responsável pela busca das informações de Usuário conforme o id.
@@ -12,7 +12,7 @@ import { TipoAmigoClientService } from './tipo-amigo-client.service';
  * @author Guiliano Rangel (UEG)
  */
 @Injectable()
-export class TipoAmigoResolve implements Resolve<any> {
+export class ModeloArmaResolve implements Resolve<any> {
 
   /**
    * Construtor da classe.
@@ -23,7 +23,7 @@ export class TipoAmigoResolve implements Resolve<any> {
    */
   constructor(
     private router: Router,
-    private usuarioClientService: TipoAmigoClientService,
+    private usuarioClientService: ModeloArmaClientService,
     private messageService: MessageService
   ) { }
 

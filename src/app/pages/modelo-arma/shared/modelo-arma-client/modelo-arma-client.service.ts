@@ -11,7 +11,7 @@ import {FiltroUsuarioDTO} from '../../../../shared/dto/filtro-usuario.dto';
 @Injectable({
   providedIn: 'root'
 })
-export class TipoAmigoClientService {
+export class ModeloArmaClientService {
 
   /**
    * Construtor da classe.
@@ -27,7 +27,7 @@ export class TipoAmigoClientService {
    * @return
    */
   public getById(id: number): Observable<any> {
-    return this.http.get(`${environment.urlApi}/tipo-amigo/${id}`);
+    return this.http.get(`${environment.urlApi}/modeloarma/${id}`);
   }
 
   /**
@@ -36,7 +36,7 @@ export class TipoAmigoClientService {
    * @param filtroDTO
    */
   public getByFiltro(filtroDTO: FiltroUsuarioDTO): Observable<any> {
-    return this.http.get(`${environment.urlApi}/tipo-amigo/filtro`, {
+    return this.http.get(`${environment.urlApi}/modeloarma`, {
       params: filtroDTO.toParams()
     });
   }
@@ -44,15 +44,16 @@ export class TipoAmigoClientService {
   /**
    * Salva a instância de Usuário.
    *
-   * @param usuario
+   * @param modeloArma
    */
-  public salvar(usuario: any): Observable<any> {
+  public salvar(modeloArma: any): Observable<any> {
     let result: Observable<any> = null;
 
-    if (usuario.id) {
-      result = this.http.put(`${environment.urlApi}/tipo-amigo/${usuario.id}`, usuario);
+    if (modeloArma.id) {
+      result = this.http.put(`${environment.urlApi}/modeloarma/${modeloArma.id}`, modeloArma);
     } else {
-      result = this.http.post(`${environment.urlApi}/tipo-amigo/`, usuario);
+      console.log(modeloArma);
+      result = this.http.post(`${environment.urlApi}/modeloarma/`, modeloArma);
     }
     return result;
   }
@@ -60,12 +61,12 @@ export class TipoAmigoClientService {
   /**
    * Salva a instância de Usuário.
    *
-   * @param tipoAmigo
+   * @param modeloArma
    */
-  public remover(tipoAmigo: any): Observable<any> {
+  public remover(modeloArma: any): Observable<any> {
     let result: Observable<any> = null;
 
-    result = this.http.delete(`${environment.urlApi}/tipo-amigo/${tipoAmigo.id}`, {});
+    result = this.http.delete(`${environment.urlApi}/modeloarma/${modeloArma.id}`, {});
 
     return result;
   }
