@@ -7,7 +7,7 @@ import {MaterialModule} from '../../layouts/material.module';
 
 
 import {OrderModule} from 'ngx-order-pipe';
-import {ClienteRoutes} from './tipo-amigo.routing';
+import {TipoAmigoRoutes} from './tipo-amigo.routing';
 import {MessageModule} from '../../shared/message/message.module';
 import {ValidationModule} from '../../shared/validation/validation.module';
 import {TipoAmigoFormComponent} from './tipo-amigo-form/tipo-amigo-form.component';
@@ -30,7 +30,7 @@ import {TipoAmigoClientModule} from './shared/tipo-amigo-client/tipo-amigo-clien
     ValidationModule,
     TipoAmigoClientModule,
     NgxMaskModule.forRoot({}),
-    RouterModule.forChild(ClienteRoutes)
+    RouterModule.forChild(TipoAmigoRoutes)
   ]
 })
 export class TipoAmigoModule { }
