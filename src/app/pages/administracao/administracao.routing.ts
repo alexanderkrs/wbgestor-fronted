@@ -43,6 +43,8 @@ export const AdministracaoRoutes: Routes = [
           'ROLE_AMIGO_VISUALIZAR',
           'ROLE_AMIGO_REMOVER',
           'ROLE_AMIGO_STATUS',
+
+
         ]
       }
     },
