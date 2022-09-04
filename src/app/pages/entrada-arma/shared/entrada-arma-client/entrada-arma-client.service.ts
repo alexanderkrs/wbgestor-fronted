@@ -48,12 +48,8 @@ export class EntradaArmaClientService {
    */
   public salvar(entradaArma: any): Observable<any> {
     let result: Observable<any> = null;
-
-    if (entradaArma.id) {
-      result = this.http.put(`${environment.urlApi}/arma/entrada/${entradaArma.id}`, entradaArma);
-    } else {
       result = this.http.post(`${environment.urlApi}/arma/entrada/`, entradaArma);
-    }
+
     return result;
   }
 

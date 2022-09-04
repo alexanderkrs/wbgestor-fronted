@@ -3,8 +3,6 @@ import { Routes } from '@angular/router';
 import { SecurityGuard } from '../../shared/security/security.guard';
 import { EntradaArmaResolve } from './shared/entrada-arma-client/entrada-arma.resolve';
 import { EntradaArmaFormComponent } from './entrada-arma-form/entrada-arma-form.component';
-import { EntradaArmaListComponent } from './entrada-arma-list/entrada-arma-list.component';
-import {EntradaArmaListResolve} from './shared/entrada-arma-client/entrada-arma-list.resolve';
 
 /**
  * Configurações de rota de Usuário.
@@ -26,23 +24,6 @@ export const TipoAmigoRoutes: Routes = [
         ]
       }
     },
-  },
-  {
-    path: 'listar',
-    component: EntradaArmaListComponent,
-    canActivate: [
-      SecurityGuard
-    ],
-    data: {
-      security: {
-        roles: [
-          'ROLE_TIPOAMIGO_PESQUISAR'
-        ]
-      }
-    },
-    resolve: {
-      tipoamigos: EntradaArmaListResolve,
-    }
   },
   {
     path: ':id/alterar',

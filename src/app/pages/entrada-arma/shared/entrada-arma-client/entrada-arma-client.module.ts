@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { EntradaArmaResolve } from './entrada-arma.resolve';
 import { EntradaArmaClientService } from './entrada-arma-client.service';
-import {EntradaArmaListResolve} from './entrada-arma-list.resolve';
 
 
 /**
@@ -17,7 +16,6 @@ import {EntradaArmaListResolve} from './entrada-arma-list.resolve';
   providers: [
     EntradaArmaClientService,
     EntradaArmaResolve,
-    EntradaArmaListResolve
   ]
 })
 export class EntradaArmaClientModule { }

@@ -58,26 +58,7 @@
       <div fxLayout="row" fxFlex="100" fxLayoutAlign="end center">
         <div fxFlex.gt-sm="30" fxFlex.sm="50" fxFlex.lt-sm="100" fxFlexAlign="space-between"
              fxLayoutAlign="end center">
-          <a title="{{'LABEL_VOLTAR' | i18n}}" (click)="cancelar()" fxFlex fxFlexOffset="1"
-             class="mat-button mat-raised-button mat-primary mat-button-base"
-             *ngIf="acaoSistema.isAcaoVisualizar()"
-          >
-            <span>{{'LABEL_VOLTAR' | i18n}}</span>
-          </a>
-          <a title="{{'LABEL_CANCELAR' | i18n}}" (click)="cancelar()" fxFlex fxFlexOffset="1"
-             class="mat-button mat-raised-button mat-warn mat-button-base"
-             *ngIf="!acaoSistema.isAcaoVisualizar()"
-          >
-            <span>{{'LABEL_CANCELAR' | i18n}}</span>
-          </a>
 
-          <button type="submit" title="{{'LABEL_REMOVER' | i18n}}" (click)="remover(entradaArma)"
-                  fxFlex fxFlexOffset="1"
-                  class="mat-button mat-raised-button mat-warn mat-button-base"
-                  *ngIf="acaoSistema.isAcaoAlterar() && securityService.hasRoles('ROLE_TIPOAMIGO_REMOVER')"
-          >
-            <span>{{'LABEL_REMOVER' | i18n}}</span>
-          </button>
           <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(entradaArma, formEntradaArma, $event)"
                   fxFlex fxFlexOffset="1"
                   class="mat-button mat-raised-button mat-primary mat-button-base"
