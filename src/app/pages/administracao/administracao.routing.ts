@@ -74,13 +74,13 @@ export const AdministracaoRoutes: Routes = [
         path: 'tipo-amigo', loadChildren: () => import('../tipo-amigo/tipo-amigo.module').then(m => m.TipoAmigoModule)
       },
       {
+        path: 'cliente', loadChildren: () => import('../cliente/cliente.module').then(m => m.ClienteModule)
+      },
+      {
         path: 'modelo-arma', loadChildren: () => import('../modelo-arma/modelo-arma.module').then(m => m.ModeloArmaModule)
       },
       {
         path: 'amigo', loadChildren: () => import('../amigo/amigo.module').then(m => m.AmigoModule)
-      },
-      {
-        path: 'cliente', loadChildren: () => import('../amigo/amigo.module').then(m => m.AmigoModule)
       }
     ]
   }

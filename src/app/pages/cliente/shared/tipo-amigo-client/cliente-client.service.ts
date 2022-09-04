@@ -11,7 +11,7 @@ import {FiltroUsuarioDTO} from '../../../../shared/dto/filtro-usuario.dto';
 @Injectable({
   providedIn: 'root'
 })
-export class TipoAmigoClientService {
+export class ClienteClientService {
 
   /**
    * Construtor da classe.
@@ -50,9 +50,9 @@ export class TipoAmigoClientService {
     let result: Observable<any> = null;
 
     if (usuario.id) {
-      result = this.http.put(`${environment.urlApi}/tipo-amigo/${usuario.id}`, usuario);
+      result = this.http.put(`${environment.urlApi}/cliente/${usuario.id}`, usuario);
     } else {
-      result = this.http.post(`${environment.urlApi}/tipo-amigo/`, usuario);
+      result = this.http.post(`${environment.urlApi}/cliente/`, usuario);
     }
     return result;
   }
@@ -60,12 +60,12 @@ export class TipoAmigoClientService {
   /**
    * Salva a instância de Usuário.
    *
-   * @param tipoAmigo
+   * @param cliente
    */
-  public remover(tipoAmigo: any): Observable<any> {
+  public remover(cliente: any): Observable<any> {
     let result: Observable<any> = null;
 
-    result = this.http.delete(`${environment.urlApi}/tipo-amigo/${tipoAmigo.id}`, {});
+    result = this.http.delete(`${environment.urlApi}/cliente/${cliente.id}`, {});
 
     return result;
   }

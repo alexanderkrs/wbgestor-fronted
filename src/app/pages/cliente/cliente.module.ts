@@ -7,17 +7,17 @@ import {MaterialModule} from '../../layouts/material.module';
 
 
 import {OrderModule} from 'ngx-order-pipe';
-import {ClienteRoutes} from './tipo-amigo.routing';
+import {ClienteRoutes} from './cliente.routing';
 import {MessageModule} from '../../shared/message/message.module';
 import {ValidationModule} from '../../shared/validation/validation.module';
-import {TipoAmigoFormComponent} from './tipo-amigo-form/tipo-amigo-form.component';
-import {TipoAmigoListComponent} from './tipo-amigo-list/tipo-amigo-list.component';
-import {TipoAmigoClientModule} from './shared/tipo-amigo-client/tipo-amigo-client.module';
+import {ClienteFormComponent} from './cliente-form/cliente-form.component';
+import {ClienteListComponent} from './cliente-list/cliente-list.component';
+import {ClienteClientModule} from './shared/tipo-amigo-client/cliente-client.module';
 
 @NgModule({
   declarations: [
-    TipoAmigoFormComponent,
-    TipoAmigoListComponent
+    ClienteFormComponent,
+    ClienteListComponent
   ],
   entryComponents: [
   ],
@@ -28,9 +28,9 @@ import {TipoAmigoClientModule} from './shared/tipo-amigo-client/tipo-amigo-clien
     MessageModule,
     MaterialModule,
     ValidationModule,
-    TipoAmigoClientModule,
+    ClienteClientModule,
     NgxMaskModule.forRoot({}),
     RouterModule.forChild(ClienteRoutes)
   ]
 })
-export class TipoAmigoModule { }
+export class ClienteModule { }

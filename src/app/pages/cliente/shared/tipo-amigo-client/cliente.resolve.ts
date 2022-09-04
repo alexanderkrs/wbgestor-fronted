@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 import { MessageService } from 'src/app/shared/message/message.service';
-import { TipoAmigoClientService } from './tipo-amigo-client.service';
+import { ClienteClientService } from './cliente-client.service';
 
 /**
  * Classe resolve responsável pela busca das informações de Usuário conforme o id.
@@ -12,18 +12,18 @@ import { TipoAmigoClientService } from './tipo-amigo-client.service';
  * @author Guiliano Rangel (UEG)
  */
 @Injectable()
-export class TipoAmigoResolve implements Resolve<any> {
+export class ClienteResolve implements Resolve<any> {
 
   /**
    * Construtor da classe.
    *
    * @param router
-   * @param usuarioClientService
+   * @param clienteClientService
    * @param messageService
    */
   constructor(
     private router: Router,
-    private usuarioClientService: TipoAmigoClientService,
+    private clienteClientService: ClienteClientService,
     private messageService: MessageService
   ) { }
 
@@ -36,7 +36,7 @@ export class TipoAmigoResolve implements Resolve<any> {
     const id = route.params.id;
 
     return new Observable(observer => {
-      this.usuarioClientService.getById(id).subscribe(
+      this.clienteClientService.getById(id).subscribe(
         data => {
           observer.next(data);
           observer.complete();

@@ -7,7 +7,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MessageService} from 'src/app/shared/message/message.service';
 import {SecurityService} from 'src/app/shared/security/security.service';
 import {AbstractComponent} from '../../../shared/component/Abstract.component';
-import {TipoAmigoClientService} from '../shared/tipo-amigo-client/tipo-amigo-client.service';
+import {ClienteClientService} from '../shared/tipo-amigo-client/cliente-client.service';
 import {FiltroTipoAmigoDTO} from '../../../shared/dto/filtro-tipo-amigo.dto';
 
 /**
@@ -16,11 +16,11 @@ import {FiltroTipoAmigoDTO} from '../../../shared/dto/filtro-tipo-amigo.dto';
  * @author Guiliano Rangel (UEG)
  */
 @Component({
-  selector: 'app-tipoamigo-list',
-  templateUrl: './tipo-amigo-list.component.html',
-  styleUrls: ['./tipo-amigo-list-component.scss']
+  selector: 'app-cliente-list',
+  templateUrl: './cliente-list.component.html',
+  styleUrls: ['./cliente-list-component.scss']
 })
-export class TipoAmigoListComponent extends AbstractComponent implements OnInit {
+export class ClienteListComponent extends AbstractComponent implements OnInit {
 
   public filtroDTO: FiltroTipoAmigoDTO;
 
@@ -36,17 +36,17 @@ export class TipoAmigoListComponent extends AbstractComponent implements OnInit 
    * @param route
    * @param messageService
    * @param securityService
-   * @param tipoAmigoClientService
+   * @param clienteClientService
    */
   constructor(
     route: ActivatedRoute,
     private messageService: MessageService,
     public securityService: SecurityService,
-    private tipoAmigoClientService: TipoAmigoClientService
+    private clienteClientService: ClienteClientService
   ) {
     super();
-    const tipoamigos = route.snapshot.data.tipoamigos;
-    this.dataSource = new MatTableDataSource<any>(tipoamigos);
+    const clientes = route.snapshot.data.clientes;
+    this.dataSource = new MatTableDataSource<any>(clientes);
   }
 
   /**
@@ -63,7 +63,7 @@ export class TipoAmigoListComponent extends AbstractComponent implements OnInit 
    * @param filtroTipoAmigoDTO
    */
   public pesquisar(filtroTipoAmigoDTO: FiltroTipoAmigoDTO): void {
-    this.tipoAmigoClientService.getByFiltro(filtroTipoAmigoDTO).subscribe(data => {
+    this.clienteClientService.getByFiltro(filtroTipoAmigoDTO).subscribe(data => {
       this.dataSource.paginator = this.paginator;
       this.dataSource.data = data;
     }, data => {
@@ -87,7 +87,7 @@ export class TipoAmigoListComponent extends AbstractComponent implements OnInit 
    */
   private remover(usuario: any): void {
     this.messageService.addConfirmYesNo('MSG045', () => {
-      this.tipoAmigoClientService.remover(usuario).subscribe(() => {
+      this.clienteClientService.remover(usuario).subscribe(() => {
         this.filtroDTO.nome = this.filtroDTO.nome ? this.filtroDTO.nome : '%';
         this.pesquisar(this.filtroDTO);
         this.messageService.addMsgSuccess('MSG007');

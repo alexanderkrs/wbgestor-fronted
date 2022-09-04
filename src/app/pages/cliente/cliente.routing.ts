@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 
 import { SecurityGuard } from '../../shared/security/security.guard';
-import { TipoAmigoResolve } from './shared/tipo-amigo-client/tipo-amigo.resolve';
-import { TipoAmigoFormComponent } from './tipo-amigo-form/tipo-amigo-form.component';
-import { TipoAmigoListComponent } from './tipo-amigo-list/tipo-amigo-list.component';
-import {TipoAmigoListResolve} from './shared/tipo-amigo-client/tipo-amigo-list.resolve';
+import { ClienteResolve } from './shared/tipo-amigo-client/cliente.resolve';
+import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { ClienteListComponent } from './cliente-list/cliente-list.component';
+import {ClienteListResolve} from './shared/tipo-amigo-client/cliente-list.resolve';
 
 /**
  * Configurações de rota de Usuário.
@@ -14,7 +14,7 @@ import {TipoAmigoListResolve} from './shared/tipo-amigo-client/tipo-amigo-list.r
 export const ClienteRoutes: Routes = [
   {
     path: 'incluir',
-    component: TipoAmigoFormComponent,
+    component: ClienteFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -29,7 +29,7 @@ export const ClienteRoutes: Routes = [
   },
   {
     path: 'listar',
-    component: TipoAmigoListComponent,
+    component: ClienteListComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -41,12 +41,12 @@ export const ClienteRoutes: Routes = [
       }
     },
     resolve: {
-      tipoamigos: TipoAmigoListResolve,
+      tipoamigos: ClienteListResolve,
     }
   },
   {
     path: ':id/alterar',
-    component: TipoAmigoFormComponent,
+    component: ClienteFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -59,12 +59,12 @@ export const ClienteRoutes: Routes = [
       }
     },
     resolve: {
-      tipoAmigo: TipoAmigoResolve,
+      tipoAmigo: ClienteResolve,
     }
   },
   {
     path: ':id/visualizar',
-    component: TipoAmigoFormComponent,
+    component: ClienteFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -77,7 +77,7 @@ export const ClienteRoutes: Routes = [
       }
     },
     resolve: {
-      tipoAmigo: TipoAmigoResolve
+      tipoAmigo: ClienteResolve
     }
   },
   {

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 import { MessageService } from 'src/app/shared/message/message.service';
-import { TipoAmigoClientService } from './tipo-amigo-client.service';
+import { ClienteClientService } from './cliente-client.service';
 import {FiltroTipoAmigoDTO} from '../../../../shared/dto/filtro-tipo-amigo.dto';
 
 /**
@@ -13,18 +13,18 @@ import {FiltroTipoAmigoDTO} from '../../../../shared/dto/filtro-tipo-amigo.dto';
  * @author Guiliano Rangel (UEG)
  */
 @Injectable()
-export class TipoAmigoListResolve implements Resolve<any> {
+export class ClienteListResolve implements Resolve<any> {
 
   /**
    * Construtor da classe.
    *
    * @param router
-   * @param tipoAmigoClientService
+   * @param clienteClientService
    * @param messageService
    */
   constructor(
     private router: Router,
-    private tipoAmigoClientService: TipoAmigoClientService,
+    private clienteClientService: ClienteClientService,
     private messageService: MessageService
   ) { }
 
@@ -39,7 +39,7 @@ export class TipoAmigoListResolve implements Resolve<any> {
     return new Observable(observer => {
       const filtro: FiltroTipoAmigoDTO = new FiltroTipoAmigoDTO();
       filtro.nome = '%%%%';
-      this.tipoAmigoClientService.getByFiltro(filtro).subscribe(
+      this.clienteClientService.getByFiltro(filtro).subscribe(
         data => {
           observer.next(data);
           observer.complete();

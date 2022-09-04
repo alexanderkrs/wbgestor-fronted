@@ -6,7 +6,7 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MessageService} from '../../../shared/message/message.service';
 import {AcaoSistema} from '../../../shared/component/acao-sistema.acao';
 import {SecurityService} from '../../../shared/security/security.service';
-import {TipoAmigoClientService} from '../shared/tipo-amigo-client/tipo-amigo-client.service';
+import {ClienteClientService} from '../shared/tipo-amigo-client/cliente-client.service';
 
 /**
  * Componente de formulário de Usuário.
@@ -15,19 +15,19 @@ import {TipoAmigoClientService} from '../shared/tipo-amigo-client/tipo-amigo-cli
  */
 @Component({
   selector: 'app-usuario-form',
-  templateUrl: './tipo-amigo-form.component.html',
-  styleUrls: ['./tipo-amigo-form.component.scss']
+  templateUrl: './cliente-form.component.html',
+  styleUrls: ['./cliente-form.component.scss']
 })
-export class TipoAmigoFormComponent {
+export class ClienteFormComponent {
 
   public acaoSistema: AcaoSistema;
 
-  public tipoAmigo: any;
+  public cliente: any;
   public submitted: boolean;
 
   private dialogRef: MatDialogRef<any>;
 
-  @ViewChild('formTipoAmigo', { static: true }) formTipoAmigo: NgForm;
+  @ViewChild('formCliente', { static: true }) formCliente: NgForm;
 
   /**
    * Construtor da classe.
@@ -37,7 +37,7 @@ export class TipoAmigoFormComponent {
    * @param dialog
    * @param messageService
    * @param securityService
-   * @param tipoAmigoClientService
+   * @param clienteClientService
    */
   constructor(
     route: ActivatedRoute,
@@ -45,33 +45,33 @@ export class TipoAmigoFormComponent {
     private dialog: MatDialog,
     private messageService: MessageService,
     public securityService: SecurityService,
-    private tipoAmigoClientService: TipoAmigoClientService
+    private clienteClientService: ClienteClientService
   ) {
     this.acaoSistema = new AcaoSistema(route);
 
     if (this.acaoSistema.isAcaoIncluir()) {
-      this.tipoAmigo = {};
+      this.cliente = {};
     }
 
     if (this.acaoSistema.isAcaoAlterar() || this.acaoSistema.isAcaoVisualizar()) {
-      this.tipoAmigo = route.snapshot.data.tipoAmigo;
+      this.cliente = route.snapshot.data.cliente;
     }
   }
 
   /**
    * Salva a instância de Usuário.
    *
-   * @param tipoAmigo
+   * @param cliente
    * @param form
    * @param event
    */
-  public salvar(tipoAmigo: any, form: NgForm, event: any) {
+  public salvar(cliente: any, form: NgForm, event: any) {
     form.onSubmit(event);
     this.submitted = true;
 
     if (form.valid) {
-      this.tipoAmigoClientService.salvar(tipoAmigo).subscribe(() => {
-        this.router.navigate(['/administracao/tipo-amigo']);
+      this.clienteClientService.salvar(cliente).subscribe(() => {
+        this.router.navigate(['/administracao/cliente']);
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
         this.messageService.addMsgDanger(error);
@@ -84,19 +84,19 @@ export class TipoAmigoFormComponent {
   /**
    * Remover o Tipo de Amigo informado.
    *
-   * @param tipoAmigo
+   * @param cliente
    */
-  private remover(tipoAmigo: any): void {
+  private remover(cliente: any): void {
     this.messageService.addConfirmYesNo('MSG045', () => {
-      this.tipoAmigoClientService.remover(tipoAmigo).subscribe(() => {
-        this.router.navigate(['/administracao/tipo-amigo']);
+      this.clienteClientService.remover(cliente).subscribe(() => {
+        this.router.navigate(['/administracao/cliente']);
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
-        tipoAmigo.status = true;
+        cliente.status = true;
         this.messageService.addMsgDanger(error);
       });
     }, () => {
-      tipoAmigo.status = true;
+      cliente.status = true;
     });
   }
 
@@ -107,13 +107,13 @@ export class TipoAmigoFormComponent {
     let confirmed = false;
 
     if (this.acaoSistema.isAcaoVisualizar()) {
-      this.router.navigateByUrl('/administracao/tipo-amigo');
+      this.router.navigateByUrl('/administracao/cliente');
       confirmed = true;
     }
 
     if ( !confirmed ) {
       this.messageService.addConfirmYesNo('MSG010', () => {
-        this.router.navigateByUrl('/administracao/tipo-amigo');
+        this.router.navigateByUrl('/administracao/cliente');
       });
     }
   }
