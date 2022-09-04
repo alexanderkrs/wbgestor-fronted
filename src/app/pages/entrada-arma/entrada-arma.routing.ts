@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 
 import { SecurityGuard } from '../../shared/security/security.guard';
-import { ModeloArmaResolve } from './shared/modelo-arma-client/modelo-arma.resolve';
-import { ModeloArmaFormComponent } from './modelo-arma-form/modelo-arma-form.component';
-import { ModeloArmaListComponent } from './modelo-arma-list/modelo-arma-list.component';
-import {ModeloArmaListResolve} from './shared/modelo-arma-client/modelo-arma-list.resolve';
+import { EntradaArmaResolve } from './shared/entrada-arma-client/entrada-arma.resolve';
+import { EntradaArmaFormComponent } from './entrada-arma-form/entrada-arma-form.component';
+import { EntradaArmaListComponent } from './entrada-arma-list/entrada-arma-list.component';
+import {EntradaArmaListResolve} from './shared/entrada-arma-client/entrada-arma-list.resolve';
 
 /**
  * Configurações de rota de Usuário.
@@ -14,7 +14,7 @@ import {ModeloArmaListResolve} from './shared/modelo-arma-client/modelo-arma-lis
 export const TipoAmigoRoutes: Routes = [
   {
     path: 'incluir',
-    component: ModeloArmaFormComponent,
+    component: EntradaArmaFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -29,7 +29,7 @@ export const TipoAmigoRoutes: Routes = [
   },
   {
     path: 'listar',
-    component: ModeloArmaListComponent,
+    component: EntradaArmaListComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -41,12 +41,12 @@ export const TipoAmigoRoutes: Routes = [
       }
     },
     resolve: {
-      tipoamigos: ModeloArmaListResolve,
+      tipoamigos: EntradaArmaListResolve,
     }
   },
   {
     path: ':id/alterar',
-    component: ModeloArmaFormComponent,
+    component: EntradaArmaFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -59,12 +59,12 @@ export const TipoAmigoRoutes: Routes = [
       }
     },
     resolve: {
-      tipoAmigo: ModeloArmaResolve,
+      tipoAmigo: EntradaArmaResolve,
     }
   },
   {
     path: ':id/visualizar',
-    component: ModeloArmaFormComponent,
+    component: EntradaArmaFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -77,7 +77,7 @@ export const TipoAmigoRoutes: Routes = [
       }
     },
     resolve: {
-      tipoAmigo: ModeloArmaResolve
+      tipoAmigo: EntradaArmaResolve
     }
   },
   {

@@ -7,9 +7,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MessageService} from 'src/app/shared/message/message.service';
 import {SecurityService} from 'src/app/shared/security/security.service';
 import {AbstractComponent} from '../../../shared/component/Abstract.component';
-import {ModeloArmaClientService} from '../shared/modelo-arma-client/modelo-arma-client.service';
+import {EntradaArmaClientService} from '../shared/entrada-arma-client/entrada-arma-client.service';
 import {FiltroModeloArmaDTO} from '../../../shared/dto/filtro-modelo-arma.dto';
-import {ModeloArmaListResolve} from "../shared/modelo-arma-client/modelo-arma-list.resolve";
+import {EntradaArmaListResolve} from "../shared/entrada-arma-client/entrada-arma-list.resolve";
 
 /**
  * Componente de listagem de Usuário.
@@ -17,11 +17,11 @@ import {ModeloArmaListResolve} from "../shared/modelo-arma-client/modelo-arma-li
  * @author Guiliano Rangel (UEG)
  */
 @Component({
-  selector: 'app-modeloarma-list',
-  templateUrl: './modelo-arma-list.component.html',
-  styleUrls: ['./modelo-arma-list-component.scss']
+  selector: 'app-entradaarma-list',
+  templateUrl: './entrada-arma-list.component.html',
+  styleUrls: ['./entrada-arma-list-component.scss']
 })
-export class ModeloArmaListComponent extends AbstractComponent implements OnInit {
+export class EntradaArmaListComponent extends AbstractComponent implements OnInit {
 
   public filtroDTO: FiltroModeloArmaDTO;
 
@@ -43,11 +43,11 @@ export class ModeloArmaListComponent extends AbstractComponent implements OnInit
     route: ActivatedRoute,
     private messageService: MessageService,
     public securityService: SecurityService,
-    private modeloArmaClientService: ModeloArmaClientService
+    private entradaArmaClientService: EntradaArmaClientService
   ) {
     super();
-    const modeloArmas = route.snapshot.data.modeloArmas;
-    this.dataSource = new MatTableDataSource<any>(modeloArmas);
+    const entradaArmas = route.snapshot.data.entradaArmas;
+    this.dataSource = new MatTableDataSource<any>(entradaArmas);
   }
 
   /**
@@ -64,7 +64,7 @@ export class ModeloArmaListComponent extends AbstractComponent implements OnInit
    * @param filtroModeloArmaDTO
    */
   public pesquisar(filtroModeloArmaDTO: FiltroModeloArmaDTO): void {
-    this.modeloArmaClientService.getByFiltro(filtroModeloArmaDTO).subscribe(data => {
+    this.entradaArmaClientService.getByFiltro(filtroModeloArmaDTO).subscribe(data => {
       this.dataSource.paginator = this.paginator;
       this.dataSource.data = data;
     }, data => {
@@ -88,7 +88,7 @@ export class ModeloArmaListComponent extends AbstractComponent implements OnInit
    */
   private remover(usuario: any): void {
     this.messageService.addConfirmYesNo('MSG045', () => {
-      this.modeloArmaClientService.remover(usuario).subscribe(() => {
+      this.entradaArmaClientService.remover(usuario).subscribe(() => {
         this.filtroDTO.modelo = this.filtroDTO.modelo ? this.filtroDTO.modelo : '%';
         this.pesquisar(this.filtroDTO);
         this.messageService.addMsgSuccess('MSG007');

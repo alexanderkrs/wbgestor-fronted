@@ -6,7 +6,7 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MessageService} from '../../../shared/message/message.service';
 import {AcaoSistema} from '../../../shared/component/acao-sistema.acao';
 import {SecurityService} from '../../../shared/security/security.service';
-import {ModeloArmaClientService} from '../shared/modelo-arma-client/modelo-arma-client.service';
+import {EntradaArmaClientService} from '../shared/entrada-arma-client/entrada-arma-client.service';
 
 /**
  * Componente de formulário de Usuário.
@@ -15,19 +15,19 @@ import {ModeloArmaClientService} from '../shared/modelo-arma-client/modelo-arma-
  */
 @Component({
   selector: 'app-usuario-form',
-  templateUrl: './modelo-arma-form.component.html',
-  styleUrls: ['./modelo-arma-form.component.scss']
+  templateUrl: './entrada-arma-form.component.html',
+  styleUrls: ['./entrada-arma-form.component.scss']
 })
-export class ModeloArmaFormComponent {
+export class EntradaArmaFormComponent {
 
   public acaoSistema: AcaoSistema;
 
-  public modeloArma: any;
+  public entradaArma: any;
   public submitted: boolean;
 
   private dialogRef: MatDialogRef<any>;
 
-  @ViewChild('formModeloArma', { static: true }) formModeloArma: NgForm;
+  @ViewChild('formEntradaArma', { static: true }) formEntradaArma: NgForm;
 
   /**
    * Construtor da classe.
@@ -37,7 +37,7 @@ export class ModeloArmaFormComponent {
    * @param dialog
    * @param messageService
    * @param securityService
-   * @param modeloArmaClientService
+   * @param entradaArmaClientService
    */
   constructor(
     route: ActivatedRoute,
@@ -45,33 +45,33 @@ export class ModeloArmaFormComponent {
     private dialog: MatDialog,
     private messageService: MessageService,
     public securityService: SecurityService,
-    private modeloArmaClientService: ModeloArmaClientService
+    private entradaArmaClientService: EntradaArmaClientService
   ) {
     this.acaoSistema = new AcaoSistema(route);
 
     if (this.acaoSistema.isAcaoIncluir()) {
-      this.modeloArma = {};
+      this.entradaArma = {};
     }
 
     if (this.acaoSistema.isAcaoAlterar() || this.acaoSistema.isAcaoVisualizar()) {
-      this.modeloArma = route.snapshot.data.tipoAmigo;
+      this.entradaArma = route.snapshot.data.tipoAmigo;
     }
   }
 
   /**
    * Salva a instância de Usuário.
    *
-   * @param modeloArma
+   * @param entradaArma
    * @param form
    * @param event
    */
-  public salvar(modeloArma: any, form: NgForm, event: any) {
+  public salvar(entradaArma: any, form: NgForm, event: any) {
     form.onSubmit(event);
     this.submitted = true;
 
     if (form.valid) {
-      this.modeloArmaClientService.salvar(modeloArma).subscribe(() => {
-        this.router.navigate(['/administracao/modelo-arma']);
+      this.entradaArmaClientService.salvar(entradaArma).subscribe(() => {
+        this.router.navigate(['/administracao/entrada-arma']);
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
         this.messageService.addMsgDanger(error);
@@ -84,19 +84,19 @@ export class ModeloArmaFormComponent {
   /**
    * Remover o Tipo de Amigo informado.
    *
-   * @param modeloArma
+   * @param entradaArma
    */
-  private remover(modeloArma: any): void {
+  private remover(entradaArma: any): void {
     this.messageService.addConfirmYesNo('MSG045', () => {
-      this.modeloArmaClientService.remover(modeloArma).subscribe(() => {
-        this.router.navigate(['/administracao/modelo-arma']);
+      this.entradaArmaClientService.remover(entradaArma).subscribe(() => {
+        this.router.navigate(['/administracao/entrada-arma']);
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
-        modeloArma.status = true;
+        entradaArma.status = true;
         this.messageService.addMsgDanger(error);
       });
     }, () => {
-      modeloArma.status = true;
+      entradaArma.status = true;
     });
   }
 
@@ -107,13 +107,13 @@ export class ModeloArmaFormComponent {
     let confirmed = false;
 
     if (this.acaoSistema.isAcaoVisualizar()) {
-      this.router.navigateByUrl('/administracao/modelo-arma');
+      this.router.navigateByUrl('/administracao/entrada-arma');
       confirmed = true;
     }
 
     if ( !confirmed ) {
       this.messageService.addConfirmYesNo('MSG010', () => {
-        this.router.navigateByUrl('/administracao/modelo-arma');
+        this.router.navigateByUrl('/administracao/entrada-arma');
       });
     }
   }
