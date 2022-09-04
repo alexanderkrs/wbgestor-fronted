@@ -73,7 +73,7 @@
                           [(ngModel)]="modeloArma.alma"
                           [disabled]="acaoSistema.isAcaoVisualizar()"
                           required
-                          name="tamanho"
+                          name="alma"
               >
                 <mat-option [value]="'LISA'">Lisa</mat-option>
                 <mat-option [value]="'RAIADA'">Raiada</mat-option>
@@ -147,13 +147,7 @@
             <span>{{'LABEL_CANCELAR' | i18n}}</span>
           </a>
 
-          <button type="submit" title="{{'LABEL_REMOVER' | i18n}}" (click)="remover(modeloArma)"
-                  fxFlex fxFlexOffset="1"
-                  class="mat-button mat-raised-button mat-warn mat-button-base"
-                  *ngIf="acaoSistema.isAcaoAlterar() && securityService.hasRoles('ROLE_TIPOAMIGO_REMOVER')"
-          >
-            <span>{{'LABEL_REMOVER' | i18n}}</span>
-          </button>
+
           <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(modeloArma, formModeloArma, $event)"
                   fxFlex fxFlexOffset="1"
                   class="mat-button mat-raised-button mat-primary mat-button-base"
