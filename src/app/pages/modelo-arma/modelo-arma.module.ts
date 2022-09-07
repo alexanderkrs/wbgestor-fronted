@@ -7,17 +7,6 @@ import {MaterialModule} from '../../layouts/material.module';
 
 
 import {OrderModule} from 'ngx-order-pipe';
-<<<<<<<< HEAD:src/app/pages/entrada-arma/entrada-arma.module.ts
-import {TipoAmigoRoutes} from './entrada-arma.routing';
-import {MessageModule} from '../../shared/message/message.module';
-import {ValidationModule} from '../../shared/validation/validation.module';
-import {EntradaArmaFormComponent} from './entrada-arma-form/entrada-arma-form.component';
-import {EntradaArmaClientModule} from './shared/entrada-arma-client/entrada-arma-client.module';
-
-@NgModule({
-  declarations: [
-    EntradaArmaFormComponent,
-========
 import {TipoAmigoRoutes} from './modelo-arma.routing';
 import {MessageModule} from '../../shared/message/message.module';
 import {ValidationModule} from '../../shared/validation/validation.module';
@@ -29,7 +18,7 @@ import {ModeloArmaClientModule} from './shared/modelo-arma-client/modelo-arma-cl
   declarations: [
     ModeloArmaFormComponent,
     ModeloArmaListComponent
->>>>>>>> osmar-frontend:src/app/pages/modelo-arma/modelo-arma.module.ts
+
   ],
   entryComponents: [
   ],
@@ -40,17 +29,9 @@ import {ModeloArmaClientModule} from './shared/modelo-arma-client/modelo-arma-cl
     MessageModule,
     MaterialModule,
     ValidationModule,
-<<<<<<<< HEAD:src/app/pages/entrada-arma/entrada-arma.module.ts
-    EntradaArmaClientModule,
-========
     ModeloArmaClientModule,
->>>>>>>> osmar-frontend:src/app/pages/modelo-arma/modelo-arma.module.ts
     NgxMaskModule.forRoot({}),
     RouterModule.forChild(TipoAmigoRoutes)
   ]
 })
-<<<<<<<< HEAD:src/app/pages/entrada-arma/entrada-arma.module.ts
-export class EntradaArmaModule { }
-========
 export class ModeloArmaModule { }
->>>>>>>> osmar-frontend:src/app/pages/modelo-arma/modelo-arma.module.ts
