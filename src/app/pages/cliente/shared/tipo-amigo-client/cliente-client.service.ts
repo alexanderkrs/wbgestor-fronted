@@ -27,7 +27,7 @@ export class ClienteClientService {
    * @return
    */
   public getById(id: number): Observable<any> {
-    return this.http.get(`${environment.urlApi}/tipo-amigo/${id}`);
+    return this.http.get(`${environment.urlApi}/cliente/${id}`);
   }
 
   /**
@@ -36,7 +36,7 @@ export class ClienteClientService {
    * @param filtroDTO
    */
   public getByFiltro(filtroDTO: FiltroUsuarioDTO): Observable<any> {
-    return this.http.get(`${environment.urlApi}/tipo-amigo/filtro`, {
+    return this.http.get(`${environment.urlApi}/cliente`, {
       params: filtroDTO.toParams()
     });
   }
