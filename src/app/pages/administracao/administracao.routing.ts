@@ -55,8 +55,16 @@ export const AdministracaoRoutes: Routes = [
           'ROLE_CLIENTE_VISUALIZAR',
           'ROLE_CLIENTE_STATUS',
 
-          // COLOCAR OS ROLES DAS ARMAS
+          'ROLE_GERENCIARARMA_VISUALIZAR',
+          'ROLE_GERENCIARARMA_PESQUISAR',
+          'ROLE_GERENCIARARMA_ALTERAR',
 
+          'ROLE_TRAFEGARARMAS_OPERACAO',
+
+          'ROLE_ENTRADAARMA_INCLUIR',
+
+          'ROLE_SAIDAARMA_VENDIDASEMESTOQUE',
+          'ROLE_SAIDAARMA_SAIDA',
 
         ]
       }
