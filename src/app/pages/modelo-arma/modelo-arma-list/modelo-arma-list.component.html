@@ -2,12 +2,11 @@
 
   <div fxLayout="row">
     <div fxFlex fxFlexAlign="center">
-      <span class="content__title">{{'LABEL_PESQUISAR_TIPOAMIGO' | i18n}}</span>
     </div>
     <div fxFlex fxLayoutAlign="end center">
       <button class="mat-button mat-raised-button mat-accent mat-button-base"
               title="{{'LABEL_ADICIONAR_NOVO' | i18n}}" routerLink="/administracao/modelo-arma/incluir"
-              *ngIf="securityService.hasRoles('ROLE_TIPOAMIGO_INCLUIR')">
+              *ngIf="securityService.hasRoles('ROLE_MODELOARMA_INCLUIR')">
         {{'LABEL_ADICIONAR_NOVO' | i18n}}
       </button>
     </div>
@@ -78,13 +77,13 @@
                   </div>
                   <div fxLayout="row" fxLayoutAlign="center center">
                     <a mat-mini-fab title="{{'LABEL_VISUALIZAR_TIPOAMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_TIPOAMIGO_VISUALIZAR')"
+                       *ngIf="securityService.hasRoles('ROLE_MODELOARMA_VISUALIZAR')"
                        [routerLink]="['/administracao/modelo-arma', element.id, 'visualizar']">
                       <mat-icon>search</mat-icon>
                     </a>
 
                     <a mat-mini-fab title="{{'LABEL_ALTERAR_TIPOAMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_TIPOAMIGO_ALTERAR')"
+                       *ngIf="securityService.hasRoles('ROLE_MODELOARMA_ALTERAR')"
                        [routerLink]="['/administracao/modelo-arma', element.id, 'alterar']">
                       <mat-icon>edit</mat-icon>
                     </a>

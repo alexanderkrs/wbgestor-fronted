@@ -1,13 +1,5 @@
 <div fxLayout="column" fxLayoutGap="1.5%" fxLayoutGap.xs="2%">
 
-  <div fxLayout="row">
-    <div class="content__title" fxFlex fxFlexAlign="center">
-      <span *ngIf="acaoSistema.isAcaoAlterar()">{{'LABEL_ALTERAR_TIPOAMIGO' | i18n}}</span>
-      <span *ngIf="acaoSistema.isAcaoIncluir()">{{'LABEL_INCLUIR_TIPOAMIGO' | i18n}}</span>
-      <span *ngIf="acaoSistema.isAcaoVisualizar()">{{'LABEL_VISUALIZAR_TIPOAMIGO' | i18n}}</span>
-    </div>
-  </div>
-
   <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
 
     <form #formModeloArma="ngForm">

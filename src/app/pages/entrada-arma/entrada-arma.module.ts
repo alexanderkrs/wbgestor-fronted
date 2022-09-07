@@ -7,7 +7,7 @@ import {MaterialModule} from '../../layouts/material.module';
 
 
 import {OrderModule} from 'ngx-order-pipe';
-import {TipoAmigoRoutes} from './entrada-arma.routing';
+import {EntradaArmasRoutes} from './entrada-arma.routing';
 import {MessageModule} from '../../shared/message/message.module';
 import {ValidationModule} from '../../shared/validation/validation.module';
 import {EntradaArmaFormComponent} from './entrada-arma-form/entrada-arma-form.component';
@@ -28,7 +28,7 @@ import {EntradaArmaClientModule} from './shared/entrada-arma-client/entrada-arma
     ValidationModule,
     EntradaArmaClientModule,
     NgxMaskModule.forRoot({}),
-    RouterModule.forChild(TipoAmigoRoutes)
+    RouterModule.forChild(EntradaArmasRoutes)
   ]
 })
 

@@ -7,7 +7,7 @@ import {MaterialModule} from '../../layouts/material.module';
 
 
 import {OrderModule} from 'ngx-order-pipe';
-import {TipoAmigoRoutes} from './modelo-arma.routing';
+import {EntradaArmasRoutes} from './modelo-arma.routing';
 import {MessageModule} from '../../shared/message/message.module';
 import {ValidationModule} from '../../shared/validation/validation.module';
 import {ModeloArmaFormComponent} from './modelo-arma-form/modelo-arma-form.component';
@@ -31,7 +31,7 @@ import {ModeloArmaClientModule} from './shared/modelo-arma-client/modelo-arma-cl
     ValidationModule,
     ModeloArmaClientModule,
     NgxMaskModule.forRoot({}),
-    RouterModule.forChild(TipoAmigoRoutes)
+    RouterModule.forChild(EntradaArmasRoutes)
   ]
 })
 export class ModeloArmaModule { }

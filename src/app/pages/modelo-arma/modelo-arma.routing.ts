@@ -11,7 +11,7 @@ import {ModeloArmaListResolve} from './shared/modelo-arma-client/modelo-arma-lis
  *
  * @author Guiliano Rangel (UEG)
  */
-export const TipoAmigoRoutes: Routes = [
+export const EntradaArmasRoutes: Routes = [
   {
     path: 'incluir',
     component: ModeloArmaFormComponent,
@@ -22,7 +22,7 @@ export const TipoAmigoRoutes: Routes = [
       acao: 'incluir',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_INCLUIR'
+          'ROLE_MODELOARMA_INCLUIR'
         ]
       }
     },
@@ -37,7 +37,7 @@ export const TipoAmigoRoutes: Routes = [
     data: {
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_PESQUISAR'
+          'ROLE_MODELOARMA_PESQUISAR'
         ]
       }
     },
@@ -56,7 +56,7 @@ export const TipoAmigoRoutes: Routes = [
       acao: 'alterar',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_ALTERAR'
+          'ROLE_MODELOARMA_ALTERAR'
         ]
       }
     },
@@ -75,7 +75,7 @@ export const TipoAmigoRoutes: Routes = [
       acao: 'visualizar',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_VISUALIZAR'
+          'ROLE_MODELOARMA_VISUALIZAR'
         ]
       }
     },
