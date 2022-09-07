@@ -1,0 +1,163 @@
+<div fxLayout="column" fxLayoutGap="1.5%" fxLayoutGap.xs="2%">
+
+  <div fxLayout="row">
+    <div class="content__title" fxFlex fxFlexAlign="center">
+      <span *ngIf="acaoSistema.isAcaoAlterar()">{{'LABEL_ALTERAR_TIPOAMIGO' | i18n}}</span>
+      <span *ngIf="acaoSistema.isAcaoIncluir()">{{'LABEL_INCLUIR_TIPOAMIGO' | i18n}}</span>
+      <span *ngIf="acaoSistema.isAcaoVisualizar()">{{'LABEL_VISUALIZAR_TIPOAMIGO' | i18n}}</span>
+    </div>
+  </div>
+
+  <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
+
+    <form #formModeloArma="ngForm">
+      <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
+        <mat-card-title>
+          <span>Cadastro de Modelos</span>
+        </mat-card-title>
+        <mat-card-content fxLayout="column" fxLayoutGap="0.7%" fxLayoutGap.xs="3%">
+
+            <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+              <mat-form-field fxFlex>
+                <mat-label>Marca</mat-label>
+                <input matInput placeholder="Digite a marca" title="{{'LABEL_NOME' | i18n}}"
+                       [(ngModel)]="modeloArma.marca" name="marca" required maxlength="100"
+                       [disabled]="acaoSistema.isAcaoVisualizar()"
+                >
+                <mat-error validationMessage [submitted]="submitted"></mat-error>
+              </mat-form-field>
+            </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Modelo</mat-label>
+              <input matInput placeholder="Digite o modelo" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="modeloArma.modelo" name="modelo" required maxlength="100"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Tamanho</mat-label>
+              <mat-select placeholder="Selecione o tamanho" title="{{'LABEL_TIPO_AMIGO' | i18n}}"
+                          [(ngModel)]="modeloArma.tamanho"
+                          [disabled]="acaoSistema.isAcaoVisualizar()"
+                          required
+                          name="tamanho"
+              >
+                <mat-option [value]="'CURTA'">Curta</mat-option>
+                <mat-option [value]="'LONGA'">Longa</mat-option>
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Quantidade de canos</mat-label>
+              <input matInput placeholder="Digite a quantidade de canos" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="modeloArma.quantidadeDeCano" name="quantidadeDeCano" required maxlength="100"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Alma</mat-label>
+              <mat-select placeholder="Selecione o alma" title="{{'LABEL_TIPO_AMIGO' | i18n}}"
+                          [(ngModel)]="modeloArma.alma"
+                          [disabled]="acaoSistema.isAcaoVisualizar()"
+                          required
+                          name="alma"
+              >
+                <mat-option [value]="'LISA'">Lisa</mat-option>
+                <mat-option [value]="'RAIADA'">Raiada</mat-option>
+                <mat-error validationMessage [submitted]="submitted"></mat-error>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Calibre</mat-label>
+              <input matInput placeholder="Digite o calibre da arma" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="modeloArma.calibre" name="calibre" required maxlength="100"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Capacidade</mat-label>
+              <input matInput placeholder="Digite o capacidade da arma" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="modeloArma.capacidade" name="capacidade" required maxlength="100"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Fabricação</mat-label>
+              <input matInput placeholder="Digite o país de fabricação da arma" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="modeloArma.paisFabricacao" name="paisFabricacao" required maxlength="100"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
+            <mat-form-field fxFlex>
+              <mat-label>Preço</mat-label>
+              <input matInput placeholder="Digite o preço da arma" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="modeloArma.preco" name="preco" required maxlength="100"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
+            </mat-form-field>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </form>
+
+    <mat-card-footer fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
+      <div fxLayout="row" fxFlex="100" fxLayoutAlign="end center">
+        <div fxFlex.gt-sm="30" fxFlex.sm="50" fxFlex.lt-sm="100" fxFlexAlign="space-between"
+             fxLayoutAlign="end center">
+          <a title="{{'LABEL_VOLTAR' | i18n}}" (click)="cancelar()" fxFlex fxFlexOffset="1"
+             class="mat-button mat-raised-button mat-primary mat-button-base"
+             *ngIf="acaoSistema.isAcaoVisualizar()"
+          >
+            <span>{{'LABEL_VOLTAR' | i18n}}</span>
+          </a>
+          <a title="{{'LABEL_CANCELAR' | i18n}}" (click)="cancelar()" fxFlex fxFlexOffset="1"
+             class="mat-button mat-raised-button mat-warn mat-button-base"
+             *ngIf="!acaoSistema.isAcaoVisualizar()"
+          >
+            <span>{{'LABEL_CANCELAR' | i18n}}</span>
+          </a>
+
+
+          <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(modeloArma, formModeloArma, $event)"
+                  fxFlex fxFlexOffset="1"
+                  class="mat-button mat-raised-button mat-primary mat-button-base"
+                  *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoIncluir()"
+          >
+            <span>{{'LABEL_SALVAR' | i18n}}</span>
+          </button>
+        </div>
+      </div>
+    </mat-card-footer>
+
+  </mat-card>
+</div>

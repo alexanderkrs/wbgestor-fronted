@@ -23,9 +23,11 @@ export class EntradaArmaFormComponent {
   public acaoSistema: AcaoSistema;
 
   public entradaArma: any;
+
   public submitted: boolean;
 
   private dialogRef: MatDialogRef<any>;
+
 
   @ViewChild('formEntradaArma', { static: true }) formEntradaArma: NgForm;
 
@@ -61,6 +63,7 @@ export class EntradaArmaFormComponent {
   /**
    * Salva a instância de Usuário.
    *
+
    * @param entradaArma
    * @param form
    * @param event

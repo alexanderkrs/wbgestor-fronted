@@ -44,6 +44,19 @@ export const AdministracaoRoutes: Routes = [
           'ROLE_AMIGO_REMOVER',
           'ROLE_AMIGO_STATUS',
 
+          'ROLE_MODELOARMA_INCLUIR',
+          'ROLE_MODELOARMA_ALTERAR',
+          'ROLE_MODELOARMA_PESQUISAR',
+          'ROLE_MODELOARMA_VISUALIZAR',
+
+          'ROLE_CLIENTE_INCLUIR',
+          'ROLE_CLIENTE_ALTERAR',
+          'ROLE_CLIENTE_PESQUISAR',
+          'ROLE_CLIENTE_VISUALIZAR',
+          'ROLE_CLIENTE_STATUS',
+
+          // COLOCAR OS ROLES DAS ARMAS
+
 
         ]
       }
@@ -63,7 +76,7 @@ export const AdministracaoRoutes: Routes = [
         path: 'tipo-amigo', loadChildren: () => import('../tipo-amigo/tipo-amigo.module').then(m => m.TipoAmigoModule)
       },
       {
-        path: 'amigo', loadChildren: () => import('../amigo/amigo.module').then(m => m.AmigoModule)
+        path: 'modelo-arma', loadChildren: () => import('../modelo-arma/modelo-arma.module').then(m => m.ModeloArmaModule)
       },
       {
         path: 'entrada-arma', loadChildren: () => import('../entrada-arma/entrada-arma.module').then(m => m.EntradaArmaModule)
