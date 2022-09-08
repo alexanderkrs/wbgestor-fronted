@@ -89,6 +89,9 @@ export const AdministracaoRoutes: Routes = [
       {
         path: 'entrada-arma', loadChildren: () => import('../entrada-arma/entrada-arma.module').then(m => m.EntradaArmaModule)
       },
+      {
+        path: 'cliente', loadChildren: () => import('../cliente/cliente.module').then(m => m.ClienteModule)
+      },
     ]
   }
 ];

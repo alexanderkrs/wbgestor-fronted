@@ -29,20 +29,26 @@
         <span>Usuários</span>
       </button>
 
+      <button mat-menu-item [routerLink]="['/administracao/modelo-arma']"
+              *ngIf="securityService.hasRoles(['ROLE_MODELOARMA_VISUALIZAR' , 'ROLE_MODELOARMA_PESQUISAR'])"
+      >
+        <mat-icon>dns</mat-icon>
+        <span>Modelo de Arma</span>
+      </button>
+
+      <button mat-menu-item [routerLink]="['/administracao/cliente']"
+              *ngIf="securityService.hasRoles(['ROLE_CLIENTE_PESQUISAR', 'ROLE_CLIENTE_VISUALIZAR'])"
+      >
+        <mat-icon>dns</mat-icon>
+        <span>Cliente</span>
+      </button>
+
       <button mat-menu-item [routerLink]="['/administracao/entrada-arma']"
               *ngIf="securityService.hasRoles(['ROLE_ENTRADAARMA_INCLUIR'])"
       >
         <mat-icon>dns</mat-icon>
         <span>Entrada de Arma</span>
       </button>
-
-      <button mat-menu-item [routerLink]="['/administracao/modelo-arma']"
-              *ngIf="securityService.hasRoles(['ROLE_MODELOARMA_VISUALIZAR' , 'ROLE_MODELOARMA_PESQUISAR'])"
-      >
-        <mat-icon>dns</mat-icon>
-        <span>Entrada de Arma</span>
-      </button>
-
 
     </mat-menu>
 
@@ -61,17 +67,23 @@
         <mat-icon>person</mat-icon>
         Usuários</a>
 
-      <a mat-button [routerLink]="['/administracao/entrada-arma']"
-         *ngIf="securityService.hasRoles(['ROLE_ENTRADAARMA_INCLUIR'])"
-      >
-        <mat-icon>dns</mat-icon>
-        Entrada de Arma</a>
-
       <a mat-button [routerLink]="['/administracao/modelo-arma']"
          *ngIf="securityService.hasRoles(['ROLE_MODELOARMA_VISUALIZAR' , 'ROLE_MODELOARMA_PESQUISAR'])"
       >
         <mat-icon>dns</mat-icon>
         Modelo Arma</a>
+
+      <a mat-button [routerLink]="['/administracao/cliente']"
+         *ngIf="securityService.hasRoles(['ROLE_CLIENTE_PESQUISAR', 'ROLE_CLIENTE_VISUALIZAR'])"
+      >
+        <mat-icon>dns</mat-icon>
+        Cliente</a>
+
+      <a mat-button [routerLink]="['/administracao/entrada-arma']"
+         *ngIf="securityService.hasRoles(['ROLE_ENTRADAARMA_INCLUIR'])"
+      >
+        <mat-icon>dns</mat-icon>
+        Entrada de Arma</a>
 
     </div>
   </div>
