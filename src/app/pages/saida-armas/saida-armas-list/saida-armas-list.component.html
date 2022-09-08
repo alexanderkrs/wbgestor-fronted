@@ -65,15 +65,21 @@
                   </div>
                   <div fxLayout="row" fxLayoutAlign="center center">
                     <a mat-mini-fab title="{{'LABEL_VISUALIZAR_AMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_TRAFEGARARMAS_OPERACAO')"
-                       [routerLink]="['/administracao/trafegar-armas', element.id, 'visualizar']">
+                       *ngIf="securityService.hasRoles(['ROLE_MODELOARMA_VISUALIZAR' , 'ROLE_MODELOARMA_PESQUISAR'])"
+                       [routerLink]="['/administracao/saida-armas', element.id, 'visualizar']">
                       <mat-icon>search</mat-icon>
                     </a>
 
                     <a mat-mini-fab title="{{'LABEL_ALTERAR_AMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_TRAFEGARARMAS_OPERACAO')"
-                       [routerLink]="['/administracao/trafegar-armas', element.id, 'alterar']">
+                       *ngIf="securityService.hasRoles(['ROLE_MODELOARMA_VISUALIZAR' , 'ROLE_MODELOARMA_PESQUISAR'])"
+                       [routerLink]="['/administracao/saida-armas', element.id, 'alterar']">
                       <mat-icon>edit</mat-icon>
+                    </a>
+
+                    <a mat-mini-fab title="{{'LABEL_REMOVER_AMIGO' | i18n}}" class="btn-primary"
+                       *ngIf="securityService.hasRoles(['ROLE_MODELOARMA_VISUALIZAR' , 'ROLE_MODELOARMA_PESQUISAR'])"
+                       (click)="remover(element)">
+                      <mat-icon>close</mat-icon>
                     </a>
 
                   </div>

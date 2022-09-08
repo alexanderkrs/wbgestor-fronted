@@ -57,6 +57,13 @@
         <span>Trafegar Armas</span>
       </button>
 
+      <button mat-menu-item [routerLink]="['/administracao/saida-armas']"
+              *ngIf="securityService.hasRoles(['ROLE_SAIDAARMA_VENDIDASEMESTOQUE', 'ROLE_SAIDAARMA_SAIDA'])"
+      >
+        <mat-icon>dns</mat-icon>
+        <span>Saída Armas</span>
+      </button>
+
     </mat-menu>
 
     <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
@@ -97,6 +104,12 @@
       >
         <mat-icon>dns</mat-icon>
         Trafegar Armas</a>
+
+      <a mat-button [routerLink]="['/administracao/saida-armas']"
+         *ngIf="securityService.hasRoles(['ROLE_MODELOARMA_VISUALIZAR' , 'ROLE_MODELOARMA_PESQUISAR'])"
+      >
+        <mat-icon>dns</mat-icon>
+        Saída Armas</a>
 
     </div>
   </div>

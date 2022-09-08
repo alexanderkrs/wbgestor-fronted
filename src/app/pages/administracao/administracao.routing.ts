@@ -3,6 +3,7 @@ import {SecurityGuard} from '../../shared/security/security.guard';
 import {AdministracaoComponent} from './administracao.component';
 import {LayoutComponent} from '../../layouts/layout.component';
 import {TrafegarArmasModule} from '../trafegar-armas/trafegar-armas.module';
+import {SaidaArmasModule} from '../saida-armas/saida-armas.module';
 
 /**
  * Configuração de 'Rotas' do módulo 'Home'.
@@ -95,6 +96,9 @@ export const AdministracaoRoutes: Routes = [
       },
       {
         path: 'trafegar-armas', loadChildren: () => import('../trafegar-armas/trafegar-armas.module').then(m => m.TrafegarArmasModule)
+      },
+      {
+        path: 'saida-armas', loadChildren: () => import('../saida-armas/saida-armas.module').then(m => m.SaidaArmasModule)
       },
     ]
   }

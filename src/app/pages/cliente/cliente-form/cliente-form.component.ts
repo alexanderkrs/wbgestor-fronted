@@ -88,7 +88,7 @@ export class ClienteFormComponent {
    * @param cliente
    */
   private desativar(cliente: any): void {
-    this.messageService.addConfirmYesNo('MSG045', () => {
+    this.messageService.addConfirmYesNo('Você deseja mesmo destivar este cliente', () => {
       this.clienteClientService.desativar(cliente).subscribe(() => {
         this.router.navigate(['/administracao/cliente']);
         this.messageService.addMsgSuccess('MSG007');

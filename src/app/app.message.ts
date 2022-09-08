@@ -222,6 +222,7 @@ export class AppMessage implements InternacionalizacaoResource {
       MSG048: 'Recuperação de senha realizada com sucesso. Será encaminhado para o e-mail {0} um link para a criação de uma nova senha.',
       MSG049: 'Deseja realmente cancelar a operação? Os dados informados não serão salvos e a operação será cancelada.',
 
+
       // Validation
       required: 'Campo obrigat\u00F3rio n\u00E3o preenchido.',
       minlength: 'Total de caracteres inferior ao tamanho mínimo.',

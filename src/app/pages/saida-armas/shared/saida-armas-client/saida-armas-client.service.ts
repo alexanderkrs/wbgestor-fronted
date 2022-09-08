@@ -11,7 +11,7 @@ import {FiltroAmigoDTO} from '../../../../shared/dto/filtro-amigo.dto';
 @Injectable({
   providedIn: 'root'
 })
-export class TrafegarArmasClientService {
+export class SaidaArmasClientService {
 
   /**
    * Construtor da classe.
@@ -36,7 +36,7 @@ export class TrafegarArmasClientService {
    * @param filtroDTO
    */
   public getByFiltro(filtroDTO: FiltroAmigoDTO): Observable<any> {
-    return this.http.get(`${environment.urlApi}/arma`, {
+    return this.http.get(`${environment.urlApi}/arma/vendidas`, {
       params: filtroDTO.toParams()
     });
   }
@@ -79,14 +79,14 @@ export class TrafegarArmasClientService {
   }
 
   /**
-   * remover a instância de amigo.
+   * Dar saída da arma
    *
-   * @param amigo
+   * @param arma
    */
-  public remover(amigo: any): Observable<any> {
+  public remover(arma: any): Observable<any> {
     let result: Observable<any> = null;
 
-    result = this.http.delete(`${environment.urlApi}/arma/${amigo.id}`, {});
+    result = this.http.put(`${environment.urlApi}/arma/saida/${arma.id}`, {});
 
     return result;
   }
