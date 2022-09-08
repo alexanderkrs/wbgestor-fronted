@@ -1,19 +1,12 @@
 <div fxLayout="column" fxLayoutGap="1.5%" fxLayoutGap.xs="2%">
 
-  <div fxLayout="row">
-    <div class="content__title" fxFlex fxFlexAlign="center">
-      <span *ngIf="acaoSistema.isAcaoAlterar()">{{'LABEL_ALTERAR_TIPOAMIGO' | i18n}}</span>
-      <span *ngIf="acaoSistema.isAcaoIncluir()">{{'LABEL_INCLUIR_TIPOAMIGO' | i18n}}</span>
-      <span *ngIf="acaoSistema.isAcaoVisualizar()">{{'LABEL_VISUALIZAR_TIPOAMIGO' | i18n}}</span>
-    </div>
-  </div>
 
   <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
 
     <form #formCliente="ngForm">
       <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
         <mat-card-title>
-          <span>{{'LABEL_DADOS_TIPOAMIGO' | i18n}}</span>
+          <span>Dados do Cliente</span>
         </mat-card-title>
         <mat-card-content fxLayout="column" fxLayoutGap="0.7%" fxLayoutGap.xs="3%">
 
@@ -27,22 +20,6 @@
               <mat-error validationMessage [submitted]="submitted"></mat-error>
             </mat-form-field>
 
-          </div>
-
-          <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
-            <mat-form-field fxFlex>
-              <mat-label>Status</mat-label>
-              <mat-select placeholder="Selecione o status do cliente" title="statusCliente"
-                          [(ngModel)]="cliente.statusCliente"
-                          [disabled]="acaoSistema.isAcaoVisualizar()"
-                          required
-                          name="statusCliente"
-              >
-                <mat-option [value]="'ATIVO'">Ativo</mat-option>
-                <mat-option [value]="'INATIVO'">Inativo</mat-option>
-                <mat-error validationMessage [submitted]="submitted"></mat-error>
-              </mat-select>
-            </mat-form-field>
           </div>
 
           <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
