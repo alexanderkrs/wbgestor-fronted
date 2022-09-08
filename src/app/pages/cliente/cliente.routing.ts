@@ -1,20 +1,20 @@
 import { Routes } from '@angular/router';
 
 import { SecurityGuard } from '../../shared/security/security.guard';
-import { ModeloArmaResolve } from './shared/modelo-arma-client/modelo-arma.resolve';
-import { ModeloArmaFormComponent } from './modelo-arma-form/modelo-arma-form.component';
-import { ModeloArmaListComponent } from './modelo-arma-list/modelo-arma-list.component';
-import {ModeloArmaListResolve} from './shared/modelo-arma-client/modelo-arma-list.resolve';
+import { ClienteResolve } from './shared/cliente-client/cliente.resolve';
+import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { ClienteListComponent } from './cliente-list/cliente-list.component';
+import {ClienteListResolve} from './shared/cliente-client/cliente-list.resolve';
 
 /**
  * Configurações de rota de Usuário.
  *
  * @author Guiliano Rangel (UEG)
  */
-export const EntradaArmasRoutes: Routes = [
+export const TipoAmigoRoutes: Routes = [
   {
     path: 'incluir',
-    component: ModeloArmaFormComponent,
+    component: ClienteFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -22,33 +22,32 @@ export const EntradaArmasRoutes: Routes = [
       acao: 'incluir',
       security: {
         roles: [
-          'ROLE_MODELOARMA_INCLUIR'
+          'ROLE_CLIENTE_INCLUIR',
+          'ROLE_CLIENTE_STATUS'
         ]
       }
     },
   },
-
   {
     path: 'listar',
-    component: ModeloArmaListComponent,
+    component: ClienteListComponent,
     canActivate: [
       SecurityGuard
     ],
     data: {
       security: {
         roles: [
-          'ROLE_MODELOARMA_PESQUISAR'
+          'ROLE_CLIENTE_PESQUISAR'
         ]
       }
     },
     resolve: {
-      tipoamigos: ModeloArmaListResolve,
+      tipoamigos: ClienteListResolve,
     }
   },
-
   {
     path: ':id/alterar',
-    component: ModeloArmaFormComponent,
+    component: ClienteFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -56,18 +55,18 @@ export const EntradaArmasRoutes: Routes = [
       acao: 'alterar',
       security: {
         roles: [
-          'ROLE_MODELOARMA_ALTERAR'
+          'ROLE_CLIENTE_ALTERAR',
+          'ROLE_CLIENTE_STATUS'
         ]
       }
     },
-
     resolve: {
-      tipoAmigo: ModeloArmaResolve,
+      tipoAmigo: ClienteResolve,
     }
   },
   {
     path: ':id/visualizar',
-    component: ModeloArmaFormComponent,
+    component: ClienteFormComponent,
     canActivate: [
       SecurityGuard
     ],
@@ -75,12 +74,12 @@ export const EntradaArmasRoutes: Routes = [
       acao: 'visualizar',
       security: {
         roles: [
-          'ROLE_MODELOARMA_VISUALIZAR'
+          'ROLE_CLIENTE_VISUALIZAR'
         ]
       }
     },
     resolve: {
-      tipoAmigo: ModeloArmaResolve
+      tipoAmigo: ClienteResolve
     }
   },
   {

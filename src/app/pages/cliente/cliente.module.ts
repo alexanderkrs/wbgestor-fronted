@@ -7,18 +7,17 @@ import {MaterialModule} from '../../layouts/material.module';
 
 
 import {OrderModule} from 'ngx-order-pipe';
-import {EntradaArmasRoutes} from './modelo-arma.routing';
+import {TipoAmigoRoutes} from './cliente.routing';
 import {MessageModule} from '../../shared/message/message.module';
 import {ValidationModule} from '../../shared/validation/validation.module';
-import {ModeloArmaFormComponent} from './modelo-arma-form/modelo-arma-form.component';
-import {ModeloArmaListComponent} from './modelo-arma-list/modelo-arma-list.component';
-import {ModeloArmaClientModule} from './shared/modelo-arma-client/modelo-arma-client.module';
+import {ClienteFormComponent} from './cliente-form/cliente-form.component';
+import {ClienteListComponent} from './cliente-list/cliente-list.component';
+import {ClienteClientModule} from './shared/cliente-client/cliente-client.module';
 
 @NgModule({
   declarations: [
-    ModeloArmaFormComponent,
-    ModeloArmaListComponent
-
+    ClienteFormComponent,
+    ClienteListComponent
   ],
   entryComponents: [
   ],
@@ -29,9 +28,9 @@ import {ModeloArmaClientModule} from './shared/modelo-arma-client/modelo-arma-cl
     MessageModule,
     MaterialModule,
     ValidationModule,
-    ModeloArmaClientModule,
+    ClienteClientModule,
     NgxMaskModule.forRoot({}),
-    RouterModule.forChild(EntradaArmasRoutes)
+    RouterModule.forChild(TipoAmigoRoutes)
   ]
 })
-export class ModeloArmaModule { }
+export class ClienteModule { }

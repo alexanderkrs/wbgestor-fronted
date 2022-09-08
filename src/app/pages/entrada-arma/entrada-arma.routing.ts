@@ -9,7 +9,7 @@ import { EntradaArmaFormComponent } from './entrada-arma-form/entrada-arma-form.
  *
  * @author Guiliano Rangel (UEG)
  */
-export const TipoAmigoRoutes: Routes = [
+export const EntradaArmasRoutes: Routes = [
   {
     path: 'incluir',
     component: EntradaArmaFormComponent,
@@ -20,48 +20,12 @@ export const TipoAmigoRoutes: Routes = [
       acao: 'incluir',
       security: {
         roles: [
-          'ROLE_TIPOAMIGO_INCLUIR'
+          'ROLE_ENTRADAARMA_INCLUIR'
         ]
       }
     },
   },
-  {
 
-    path: ':id/alterar',
-    component: EntradaArmaFormComponent,
-    canActivate: [
-      SecurityGuard
-    ],
-    data: {
-      acao: 'alterar',
-      security: {
-        roles: [
-          'ROLE_TIPOAMIGO_ALTERAR'
-        ]
-      }
-    },
-    resolve: {
-      tipoAmigo: EntradaArmaResolve,
-    }
-  },
-  {
-    path: ':id/visualizar',
-    component: EntradaArmaFormComponent,
-    canActivate: [
-      SecurityGuard
-    ],
-    data: {
-      acao: 'visualizar',
-      security: {
-        roles: [
-          'ROLE_TIPOAMIGO_VISUALIZAR'
-        ]
-      }
-    },
-    resolve: {
-      tipoAmigo: EntradaArmaResolve
-    }
-  },
   {
     path: '',
     redirectTo: 'incluir',

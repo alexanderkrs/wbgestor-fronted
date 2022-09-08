@@ -2,11 +2,12 @@
 
   <div fxLayout="row">
     <div fxFlex fxFlexAlign="center">
+      <span class="content__title">{{'LABEL_PESQUISAR_TIPOAMIGO' | i18n}}</span>
     </div>
     <div fxFlex fxLayoutAlign="end center">
       <button class="mat-button mat-raised-button mat-accent mat-button-base"
-              title="{{'LABEL_ADICIONAR_NOVO' | i18n}}" routerLink="/administracao/modelo-arma/incluir"
-              *ngIf="securityService.hasRoles('ROLE_MODELOARMA_INCLUIR')">
+              title="{{'LABEL_ADICIONAR_NOVO' | i18n}}" routerLink="/administracao/cliente/incluir"
+              *ngIf="securityService.hasRoles(['ROLE_CLIENTE_INCLUIR', 'ROLE_CLIENTE_STATUS'])">
         {{'LABEL_ADICIONAR_NOVO' | i18n}}
       </button>
     </div>
@@ -17,9 +18,9 @@
     <mat-card-content fxLayout="column">
       <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column">
         <mat-form-field fxFlex fxFlex.gt-xs="70" fxFlex.lt-sm="100">
-          <mat-label>Modelo</mat-label>
+          <mat-label>{{'LABEL_NOME' | i18n}}</mat-label>
           <input matInput placeholder="{{'LABEL_TIPOAMIGO_HINT' | i18n}}" title="{{'LABEL_NOME' | i18n}}"
-                 [(ngModel)]="filtroDTO.modelo" maxlength="100">
+                 [(ngModel)]="filtroDTO.nome" maxlength="100">
         </mat-form-field>
       </div>
 
@@ -50,7 +51,7 @@
         <div class="table-detail">
           <mat-table #table [dataSource]="dataSource">
 
-            <ng-container matColumnDef="modelo">
+            <ng-container matColumnDef="nome">
               <mat-header-cell class="style-header" fxHide.xs="true" fxLayoutAlign="center center"
                                *matHeaderCellDef> {{ 'LABEL_NOME' | i18n}} </mat-header-cell>
               <mat-cell fxFlex.lt-sm="100" ngClass.gt-sm="style-column" fxLayoutAlign="start center"
@@ -60,7 +61,7 @@
                     <span class="mat-body-strong">{{ 'LABEL_NOME' | i18n}} :</span>
                   </div>
                   <div>
-                    {{element.modelo}}
+                    {{element.nome}}
                   </div>
                 </div>
               </mat-cell>
@@ -77,14 +78,14 @@
                   </div>
                   <div fxLayout="row" fxLayoutAlign="center center">
                     <a mat-mini-fab title="{{'LABEL_VISUALIZAR_TIPOAMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_MODELOARMA_VISUALIZAR')"
-                       [routerLink]="['/administracao/modelo-arma', element.id, 'visualizar']">
+                       *ngIf="securityService.hasRoles('ROLE_CLIENTE_VISUALIZAR')"
+                       [routerLink]="['/administracao/cliente', element.id, 'visualizar']">
                       <mat-icon>search</mat-icon>
                     </a>
 
                     <a mat-mini-fab title="{{'LABEL_ALTERAR_TIPOAMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_MODELOARMA_ALTERAR')"
-                       [routerLink]="['/administracao/modelo-arma', element.id, 'alterar']">
+                       *ngIf="securityService.hasRoles(['ROLE_CLIENTE_ALTERAR', 'ROLE_CLIENTE_STATUS'])"
+                       [routerLink]="['/administracao/cliente', element.id, 'alterar']">
                       <mat-icon>edit</mat-icon>
                     </a>
 
