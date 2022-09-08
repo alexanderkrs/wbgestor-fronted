@@ -1,3 +1,8 @@
+#Integrantes do Grupo
+
+Alexander Costa Filho, Daniel Santana , Osmar Neto
+
+
 # ModeloFrontendAngular
 
 Usuário criados no sistema tenha a senha padrão 123456
