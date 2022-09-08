@@ -50,6 +50,13 @@
         <span>Entrada de Arma</span>
       </button>
 
+      <button mat-menu-item [routerLink]="['/administracao/trafegar-armas']"
+              *ngIf="securityService.hasRoles(['ROLE_TRAFEGARARMAS_OPERACAO'])"
+      >
+        <mat-icon>dns</mat-icon>
+        <span>Trafegar Armas</span>
+      </button>
+
     </mat-menu>
 
     <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
@@ -84,6 +91,12 @@
       >
         <mat-icon>dns</mat-icon>
         Entrada de Arma</a>
+
+      <a mat-button [routerLink]="['/administracao/trafegar-armas']"
+         *ngIf="securityService.hasRoles(['ROLE_TRAFEGARARMAS_OPERACAO'])"
+      >
+        <mat-icon>dns</mat-icon>
+        Trafegar Armas</a>
 
     </div>
   </div>

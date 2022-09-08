@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import {SecurityGuard} from '../../shared/security/security.guard';
 import {AdministracaoComponent} from './administracao.component';
 import {LayoutComponent} from '../../layouts/layout.component';
+import {TrafegarArmasModule} from '../trafegar-armas/trafegar-armas.module';
 
 /**
  * Configuração de 'Rotas' do módulo 'Home'.
@@ -91,6 +92,9 @@ export const AdministracaoRoutes: Routes = [
       },
       {
         path: 'cliente', loadChildren: () => import('../cliente/cliente.module').then(m => m.ClienteModule)
+      },
+      {
+        path: 'trafegar-armas', loadChildren: () => import('../trafegar-armas/trafegar-armas.module').then(m => m.TrafegarArmasModule)
       },
     ]
   }
