@@ -60,12 +60,12 @@ export class ClienteClientService {
   /**
    * Salva a instância de Usuário.
    *
-   * @param tipoAmigo
+   * @param cliente
    */
-  public remover(tipoAmigo: any): Observable<any> {
+  public desativar(cliente: any): Observable<any> {
     let result: Observable<any> = null;
 
-    result = this.http.delete(`${environment.urlApi}/tipo-amigo/${tipoAmigo.id}`, {});
+    result = this.http.put(`${environment.urlApi}/cliente/inativo/${cliente.id}`, {});
 
     return result;
   }

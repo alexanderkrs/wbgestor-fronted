@@ -138,12 +138,12 @@
             <span>{{'LABEL_CANCELAR' | i18n}}</span>
           </a>
 
-          <button type="submit" title="{{'LABEL_REMOVER' | i18n}}" (click)="remover(cliente)"
+          <button type="submit" title="Desativar" (click)="desativar(cliente)"
                   fxFlex fxFlexOffset="1"
                   class="mat-button mat-raised-button mat-warn mat-button-base"
                   *ngIf="acaoSistema.isAcaoAlterar() && securityService.hasRoles('ROLE_TIPOAMIGO_REMOVER')"
           >
-            <span>{{'LABEL_REMOVER' | i18n}}</span>
+            <span>Desativar</span>
           </button>
           <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(cliente, formCliente, $event)"
                   fxFlex fxFlexOffset="1"

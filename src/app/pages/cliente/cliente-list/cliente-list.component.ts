@@ -80,24 +80,4 @@ export class ClienteListComponent extends AbstractComponent implements OnInit {
     this.dataSource.data = [];
   }
 
-  /**
-   * Ativa o Usuário informado.
-   *
-   * @param usuario
-   */
-  private remover(usuario: any): void {
-    this.messageService.addConfirmYesNo('MSG045', () => {
-      this.clienteClientService.remover(usuario).subscribe(() => {
-        this.filtroDTO.nome = this.filtroDTO.nome ? this.filtroDTO.nome : '%';
-        this.pesquisar(this.filtroDTO);
-        this.messageService.addMsgSuccess('MSG007');
-      }, error => {
-        usuario.status = false;
-        this.messageService.addMsgDanger(error);
-      });
-    }, () => {
-      usuario.status = false;
-    });
-  }
-
 }
