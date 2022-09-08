@@ -17,7 +17,7 @@
         <mat-form-field fxFlex fxFlex.gt-xs="70" fxFlex.lt-sm="100">
           <mat-label>{{'LABEL_NOME' | i18n}}</mat-label>
           <input matInput placeholder="{{'LABEL_AMIGO_HINT' | i18n}}" title="{{'LABEL_NOME' | i18n}}"
-                 [(ngModel)]="filtroDTO.modeloArma" maxlength="100">
+                 [(ngModel)]="filtroDTO.serie" maxlength="100">
         </mat-form-field>
       </div>
 
@@ -48,9 +48,9 @@
         <div class="table-detail">
           <mat-table #table [dataSource]="dataSource">
 
-            <ng-container matColumnDef="modeloArma">
+            <ng-container matColumnDef="serie">
               <mat-header-cell class="style-header" fxHide.xs="true" fxLayoutAlign="center center"
-                               *matHeaderCellDef> Modelo Arma </mat-header-cell>
+                               *matHeaderCellDef> Número de série </mat-header-cell>
               <mat-cell fxFlex.lt-sm="100" ngClass.gt-sm="style-column" fxLayoutAlign="start center"
                         *matCellDef="let element">
                 <div fxFlex fxLayout="row">
@@ -58,7 +58,7 @@
                     <span class="mat-body-strong">{{ 'LABEL_NOME' | i18n}} :</span>
                   </div>
                   <div>
-                    {{element.modeloArma}}
+                    {{element.serie}}
                   </div>
                 </div>
               </mat-cell>
@@ -86,11 +86,6 @@
                       <mat-icon>edit</mat-icon>
                     </a>
 
-                    <a mat-mini-fab title="{{'LABEL_REMOVER_AMIGO' | i18n}}" class="btn-primary"
-                       *ngIf="securityService.hasRoles('ROLE_TRAFEGARARMAS_OPERACAO')"
-                       (click)="remover(element)">
-                      <mat-icon>close</mat-icon>
-                    </a>
                   </div>
                 </div>
               </mat-cell>

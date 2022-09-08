@@ -45,15 +45,15 @@ export class TrafegarArmasClientService {
   /**
    * Salva a instância de amigo.
    *
-   * @param amigo
+   * @param trafegarArma
    */
-  public salvar(amigo: any): Observable<any> {
+  public salvar(trafegarArma: any): Observable<any> {
     let result: Observable<any> = null;
 
-    if (amigo.id) {
-      result = this.http.put(`${environment.urlApi}/arma/${amigo.id}`, amigo);
+    if (trafegarArma.id) {
+      result = this.http.put(`${environment.urlApi}/arma/${trafegarArma.id}`, trafegarArma);
     } else {
-      result = this.http.post(`${environment.urlApi}/arma/`, amigo);
+      result = this.http.post(`${environment.urlApi}/arma/`, trafegarArma);
     }
     return result;
   }

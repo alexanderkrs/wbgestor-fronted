@@ -2,7 +2,7 @@
 
   <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
 
-    <form #formAmigo="ngForm">
+    <form #formTrafegarArmas="ngForm">
       <mat-card fxLayout="column" fxLayoutGap="1%" fxLayoutGap.xs="2%">
         <mat-card-title>
           <span>Dados para Trafegar Arma</span>
@@ -10,42 +10,46 @@
         <mat-card-content fxLayout="column" fxLayoutGap="0.7%" fxLayoutGap.xs="3%">
 
           <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
-            <mat-form-field fxFlex>
-              <mat-label>Modelo Arma</mat-label>
-              <input matInput placeholder="modelo da arma que ira ser trafegada" title="{{'LABEL_NOME' | i18n}}"
-                     [(ngModel)]="trafegarArma.modeloArma" name="modeloArma" required maxlength="20"
-                     [disabled]="acaoSistema.isAcaoVisualizar() || acaoSistema.isAcaoAlterar()"
-              >
-              <mat-error validationMessage [submitted]="submittedAmigo"></mat-error>
-            </mat-form-field>
 
             <mat-form-field fxFlex>
-              <mat-label>Modelo Arma</mat-label>
-              <input matInput placeholder="modelo da arma que ira ser trafegada" title="{{'LABEL_NOME' | i18n}}"
-                     [(ngModel)]="trafegarArma.modeloArma" name="modeloArma" required maxlength="20"
+              <mat-label>Número de Série</mat-label>
+              <input matInput placeholder="Número de série da arma que ira ser trafegada" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="trafegarArma.serie" name="serie" required maxlength="20"
                      [disabled]="acaoSistema.isAcaoVisualizar() || acaoSistema.isAcaoAlterar()"
               >
-              <mat-error validationMessage [submitted]="submittedAmigo"></mat-error>
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
             </mat-form-field>
           </div>
 
           <div fxLayout="row" fxLayoutAlign.gt-xs="center end" fxLayout.lt-sm="column" fxLayoutGap="0.7%">
 
 
+            <mat-form-field fxFlex>
+              <mat-label>Cliente</mat-label>
+              <input matInput placeholder="ID do cliente que comprou a arma" title="{{'LABEL_NOME' | i18n}}"
+                     [(ngModel)]="trafegarArma.cliente" name="cliente" required maxlength="20"
+                     [disabled]="acaoSistema.isAcaoVisualizar()"
+              >
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
+            </mat-form-field>
+
             <mat-form-field fxFlex.gt-xs="50" fxFlex.lt-sm="100" fxFlexOffset.gt-xs="1">
-              <mat-label>{{'LABEL_TIPO_AMIGO' | i18n}}</mat-label>
-              <mat-select placeholder="{{'LABEL_TIPO_AMIGO' | i18n}}" title="{{'LABEL_TIPO_AMIGO' | i18n}}"
-                          [(ngModel)]="trafegarArma.idTipoAmigo"
+              <mat-label>Status</mat-label>
+              <mat-select placeholder="selecione o status da arma" title="{{'LABEL_TIPO_AMIGO' | i18n}}"
+                          [(ngModel)]="trafegarArma.status"
                           [disabled]="acaoSistema.isAcaoVisualizar()"
                           required
-                          name="tipoAmigo"
+                          name="status"
               >
                 <mat-option [value]="undefined">{{ 'LABEL_SELECIONE' | i18n}}</mat-option>
-                <mat-option *ngFor="let tipoAmigo of tipoAmigos" [value]="tipoAmigo.id">
-                  {{tipoAmigo.nome}}
-                </mat-option>
+                <mat-option [value]="'DISPONIVEL'">Disponível</mat-option>
+                <mat-option [value]="'VENDIDO_EM_ESTOQUE'">Vendido em Estoque</mat-option>
+                <mat-option [value]="'VENDIDO_E_RETIRADO'">Vendido e Retirado</mat-option>
+                <mat-option [value]="'ROUBADO'">Roubado</mat-option>
+                <mat-option [value]="'GARANTIA'">Garantia</mat-option>
+                <mat-option [value]="'DESATIVADO'">Desativar</mat-option>
               </mat-select>
-              <mat-error validationMessage [submitted]="submittedAmigo"></mat-error>
+              <mat-error validationMessage [submitted]="submitted"></mat-error>
             </mat-form-field>
           </div>
         </mat-card-content>
@@ -68,7 +72,7 @@
           >
             <span>{{'LABEL_CANCELAR' | i18n}}</span>
           </a>
-          <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(trafegarArma, formAmigo, $event)"
+          <button type="submit" title="{{'LABEL_SALVAR' | i18n}}" (click)="salvar(trafegarArma, formTrafegarArmas, $event)"
                   fxFlex fxFlexOffset="1"
                   class="mat-button mat-raised-button mat-primary mat-button-base"
                   *ngIf="acaoSistema.isAcaoAlterar() || acaoSistema.isAcaoIncluir()"

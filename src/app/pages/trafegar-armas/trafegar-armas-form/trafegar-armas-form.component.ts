@@ -24,14 +24,15 @@ export class TrafegarArmasFormComponent {
   public acaoSistema: AcaoSistema;
 
   public trafegarArma: any;
-  public tipoAmigos: any[];
-  public submittedAmigo: boolean;
+  public clientes: any[];
+
+  public submitted: boolean;
 
   public dataSourceGrupos: MatTableDataSource<any>;
 
   public displayedColumns: any;
 
-  @ViewChild('formAmigo', { static: true }) formAmigo: NgForm;
+  @ViewChild('formTrafegarArmas', { static: true }) formTrafegarArmas: NgForm;
 
   /**
    * Construtor da classe.
@@ -41,7 +42,7 @@ export class TrafegarArmasFormComponent {
    * @param dialog
    * @param messageService
    * @param securityService
-   * @param amigoClientService
+   * @param trafegarArmasClientService
    */
   constructor(
     route: ActivatedRoute,
@@ -49,12 +50,12 @@ export class TrafegarArmasFormComponent {
     private dialog: MatDialog,
     private messageService: MessageService,
     public securityService: SecurityService,
-    private amigoClientService: TrafegarArmasClientService
+    private trafegarArmasClientService: TrafegarArmasClientService
   ) {
     this.acaoSistema = new AcaoSistema(route);
     this.dataSourceGrupos = new MatTableDataSource<any>();
 
-    this.tipoAmigos = route.snapshot.data.tipoAmigos;
+    this.clientes = route.snapshot.data.clientes;
 
 
     if (this.acaoSistema.isAcaoIncluir()) {
@@ -74,17 +75,16 @@ export class TrafegarArmasFormComponent {
   /**
    * Salva a instância de Amigo.
    *
-   * @param amigo
+   * @param trafegarArmas
    * @param form
    * @param event
    */
-  public salvar(amigo: any, form: NgForm, event: any) {
+  public salvar(trafegarArmas: any, form: NgForm, event: any) {
     form.onSubmit(event);
-    this.submittedAmigo = true;
 
     if (form.valid) {
-      this.amigoClientService.salvar(amigo).subscribe(() => {
-          this.router.navigate(['/administracao/amigo']);
+      this.trafegarArmasClientService.salvar(trafegarArmas).subscribe(() => {
+          this.router.navigate(['/administracao/trafegar-armas']);
           this.messageService.addMsgSuccess('MSG007');
         }, error => {
           this.messageService.addMsgDanger(error);
@@ -112,7 +112,7 @@ export class TrafegarArmasFormComponent {
    */
   private tornarAmigo(amigo: any): void {
     this.messageService.addConfirmYesNo('MSG046', () => {
-      this.amigoClientService.tornarAmigo(amigo.id).subscribe(() => {
+      this.trafegarArmasClientService.tornarAmigo(amigo.id).subscribe(() => {
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
         amigo.status = false;
@@ -130,7 +130,7 @@ export class TrafegarArmasFormComponent {
    */
   private deixarAmigo(amigo: any): void {
     this.messageService.addConfirmYesNo('MSG047', () => {
-      this.amigoClientService.deixarAmizade(amigo.id).subscribe(() => {
+      this.trafegarArmasClientService.deixarAmizade(amigo.id).subscribe(() => {
         this.messageService.addMsgSuccess('MSG007');
       }, error => {
         amigo.status = true;
@@ -148,13 +148,13 @@ export class TrafegarArmasFormComponent {
     let confirmed = false;
 
     if (this.acaoSistema.isAcaoVisualizar()) {
-      this.router.navigateByUrl('/administracao/amigo');
+      this.router.navigateByUrl('/administracao/trafegar-armas');
       confirmed = true;
     }
 
     if ( !confirmed ) {
       this.messageService.addConfirmYesNo('MSG010', () => {
-        this.router.navigateByUrl('/administracao/amigo');
+        this.router.navigateByUrl('/administracao/trafegar-armas');
       });
     }
   }

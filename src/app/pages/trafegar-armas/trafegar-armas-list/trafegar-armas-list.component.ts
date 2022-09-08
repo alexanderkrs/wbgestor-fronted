@@ -31,7 +31,7 @@ export class TrafegarArmasListComponent extends AbstractComponent implements OnI
 
   public dataAmizade: Date = null;
 
-  public displayedColumns = ['modeloArma', 'acoes'];
+  public displayedColumns = ['serie', 'acoes'];
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -146,7 +146,7 @@ export class TrafegarArmasListComponent extends AbstractComponent implements OnI
   private remover(amigo: any): void {
     this.messageService.addConfirmYesNo('MSG045', () => {
       this.amigoClientService.remover(amigo).subscribe(() => {
-        this.filtroDTO.modeloArma = this.filtroDTO.modeloArma ? this.filtroDTO.modeloArma : '%';
+        this.filtroDTO.serie = this.filtroDTO.serie ? this.filtroDTO.serie : '%';
         this.pesquisar(this.filtroDTO);
         this.messageService.addMsgSuccess('MSG007');
       }, error => {

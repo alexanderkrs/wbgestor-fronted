@@ -11,10 +11,10 @@ export class FiltroTrafegarArmasDTO {
   /**
    * Construtor da classe.
    *
-   * @param modeloArma
+   * @param serie
    */
   constructor(
-    public modeloArma?: string,
+    public serie?: string,
   ) { }
 
   /**
@@ -39,8 +39,8 @@ export class FiltroTrafegarArmasDTO {
   public toParams(): HttpParams {
     let params = new HttpParams();
 
-    if (this.modeloArma) {
-      params = params.append('modeloArma', this.modeloArma);
+    if (this.serie) {
+      params = params.append('modeloArma', this.serie);
     }
 
     return params;
